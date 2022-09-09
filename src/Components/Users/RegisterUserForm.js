@@ -1,69 +1,100 @@
-import React, { useState } from "react";
+import React, { useState }from "react";
+import { useFormik } from "formik";
+const axios = require('axios');
 
 const RegisterUserForm = () => {
-  const [userData, setUserData] = useState({
-    name:"",
-    surname:"",
-    email:"",
-    password:"",
-  });
-  const handleChange = (event) => {
-    const value = event.target.value;
-    const name = event.target.name;
-    setUserData((prevData) => ({ ...prevData, [name]: value }));
-   
-    console.log(userData);
-    console.log(event);
+const [successMsg, setSuccessMsg] = useState(null)
+const [errorMsg, setErrorMsg] = useState(null)
+
+
+  const validate = (values) => {
+    const errors = {};
+    if (
+      !values.firstName ||
+      !values.lastName ||
+      !values.email ||
+      !values.password
+    ) {
+      errors.msg = "You have to complete all fields to submit the form";
+    } else if (values.password.length < 6) {
+      errors.password = "Password must be at least 6 characters";
+    }
+    return errors;
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(userData.name);
-  };
+  const onSubmit = async (values) => {
+    try{
+      const response = await axios.post("http://localhost:5000/auth/register",values)
+      if(response){
+        setSuccessMsg(response.values.msg);
+      }
+    }
+    catch(err){
+      setErrorMsg(err.msg);
+    }
+    
+  }
+
+  const formik = useFormik({
+    initialValues: {
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+    },
+    validate,
+    onSubmit
+  });
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+    {!errorMsg ? <div>{successMsg}</div> : ""}
+    {!successMsg ? <div>{errorMsg}</div> : ""}
+      <form onSubmit={formik.handleSubmit}>
         <label>
-          Name
+          First Name
           <input
             type="text"
-            name="name"
-            value={userData.name}
-            onChange={handleChange}
+            name="firstName"
+            value={formik.values.firstName}
+            onChange={formik.handleChange}
           />
         </label>
         <label>
-          Surname
+          Last Name
           <input
             type="text"
-            name="surname"
-            value={userData.surname}
-            onChange={handleChange}
+            name="lastName"
+            value={formik.values.lastName}
+            onChange={formik.handleChange}
           />
         </label>
         <label>
           Email
           <input
-            type="text"
-            name="name"
-            value={userData.email}
-            onChange={handleChange}
+            type="email"
+            name="email"
+            value={formik.values.email}
+            onChange={formik.handleChange}
           />
         </label>
         <label>
           Password
           <input
-            type="text"
-            name="name"
-            value={userData.password}
-            onChange={handleChange}
+            type="password"
+            name="password"
+            value={formik.values.password}
+            onChange={formik.handleChange}
           />
         </label>
         <div>
           <button type="submit">Submit</button>
         </div>
       </form>
+      <div>
+        {formik.errors.msg && <div>{formik.errors.msg}</div>}
+        {formik.errors.password && <div>{formik.errors.password}</div>}
+      </div>
     </>
   );
 };
