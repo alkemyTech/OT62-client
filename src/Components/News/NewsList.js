@@ -5,8 +5,8 @@ import news from '../../mocks/newsMock';
 const NewsList = () => {
     return (
         <div className='min-h-full'>
-            <h1 className='font-bold text-4xl mb-4'>Novedades</h1>
-            <div className='flex w-3/4 m-auto'>
+            <h1 className='font-bold text-4xl mb-[54px] mt-[54px] text-center'>Novedades</h1>
+            <div className='flex w-3/4 m-auto mb-[54px]'>
                 <ul className="flex flex-wrap gap-4 w-full justify-center">
                     {news.length > 0 ? 
                         news.map((element) => {
