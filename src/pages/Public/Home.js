@@ -13,35 +13,35 @@ const Home = () => {
   const testimonials = [
     {
       id: "1",
-      name: "Julian Fernandez",
+      name: "Nombre y Apellido",
       image: member1,
       content:
         "adawdawd hil laudantium quaerat itaque, perferendis voluptate magnam dolor quam provident",
     },
     {
       id: "2",
-      name: "Julian Fernandez",
+      name: "Nombre y Apellido",
       image: member1,
       content:
         "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio dignissimos in molestiae cumque aliquam rerum eligendi sapiente corporis! Eius eligendi nihil laudantium quaerat itaque, perferendis voluptate magnam dolor quam provident",
     },
     {
       id: "3",
-      name: "Julian Fernandez",
+      name: "Nombre y Apellido",
       image: member1,
       content:
         "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio dignissimos in molestiae cumque aliquam rerum eligendi sapiente corporis! Eius eligendi nihil laudantium quaerat itaque, perferendis voluptate magnam dolor quam provident",
     },
     {
       id: "4",
-      name: "Julian Fernandez",
+      name: "Nombre y Apellido",
       image: member1,
       content:
         "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio dignissimos in molestiae cumque aliquam rerum eligendi sapiente corporis! Eius eligendi nihil laudantium quaerat itaque, perferendis voluptate magnam dolor quam provident",
     },
     {
       id: "5",
-      name: "Julian Fernandez",
+      name: "Nombre y Apellido",
       image: member1,
       content:
         "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio dignissimos in molestiae cumque aliquam rerum eligendi sapiente corporis! Eius eligendi nihil laudantium quaerat itaque, perferendis voluptate magnam dolor quam provident",
@@ -109,6 +109,33 @@ const Home = () => {
                 alt={member.name}
               />
               <p className="absolute bottom-3 text-white">{member.name}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+      {/* TESTIMONIOS */}
+      <div className="w-10/12 mx-auto mb-8">
+        <div className="sm:flex justify-between">
+          <h2 className="text-2xl font-bold">Testimonios</h2>
+          <p className="text-sm text-gray-500 my-2">Ver todos &gt;</p>
+        </div>
+        <div className="my-6 grid grid-cols-1 sm:grid sm:grid-cols-3 lg:grid lg:grid-cols-5 md:grid md:grid-cols-4 gap-4">
+          {testimonials.map((member) => (
+            <div
+              className="flex w-11/12 items-center sm:items-start sm:w-full flex-col p-4 rounded-2xl bg-yellow-200 border border-yellow-300 h-52"
+              key={member.id}
+            >
+              <img
+                className="w-16 h-16 object-cover rounded-[50%]"
+                src={member.image}
+                alt={member.name}
+              />
+              <p className="font-bold text-center sm:text-start">
+                {member.name}
+              </p>
+              <p className="text-sm max-h-24 overflow-hidden">
+                {member.content}
+              </p>
             </div>
           ))}
         </div>
