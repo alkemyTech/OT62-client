@@ -1,5 +1,8 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+import NewsList from '../../Components/News/NewsList';
+import Contacts from './Contacts';
+import Nosotros from './Nosotros';
 
 const Public = () => {
     return (
@@ -7,7 +10,9 @@ const Public = () => {
             {/* Header */}
             <Routes>
                 <Route path="/" element={<h1>Public Routes</h1>}/>
-                {/* public routes */}
+                <Route path="/news" element={<NewsList />}/>
+                <Route path='/contacts' element={<Contacts />} />
+                <Route path='/nosotros' element={<Nosotros />} />
             </Routes>
             {/* Footer */}
         </>
