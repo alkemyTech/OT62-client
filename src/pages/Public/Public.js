@@ -1,12 +1,13 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+import Home from "./Home";
 
 const Public = () => {
     return (
         <>
             {/* Header */}
             <Routes>
-                <Route path="/" element={<h1>Public Routes</h1>}/>
+                <Route path="/" element={<Home />} />
                 {/* public routes */}
             </Routes>
             {/* Footer */}
