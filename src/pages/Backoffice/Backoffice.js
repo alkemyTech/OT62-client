@@ -1,5 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+import TestimonialsBackoffice from "./Testimonials/TestimonialsBackoffice";
 
 const Public = () => {
     return (
@@ -7,7 +8,7 @@ const Public = () => {
             {/* Header */}
             <Routes>
                 <Route path="/" element={<h1>Private Routes</h1>}/>
-                {/* private routes */}
+                <Route path="/testimonials" element={<TestimonialsBackoffice />} />
             </Routes>
             {/* Footer */}
         </>
