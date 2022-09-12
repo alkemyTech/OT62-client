@@ -91,6 +91,28 @@ const Home = () => {
           />
         </div>
       </div>
+      {/* STAFF */}
+      <div className="w-10/12 mx-auto mb-8">
+        <div className="sm:flex justify-between">
+          <h2 className="text-2xl font-bold">Nuestro Staff</h2>
+          <p className="text-sm text-gray-500 my-2">Ver todos &gt;</p>
+        </div>
+        <div className="my-6 grid grid-cols-1 sm:grid sm:grid-cols-3 lg:grid lg:grid-cols-5 md:grid md:grid-cols-4 gap-4">
+          {members.map((member) => (
+            <div
+              className="flex flex-row relative justify-center"
+              key={member.id}
+            >
+              <img
+                className="w-40 h-40 object-cover rounded-2xl"
+                src={member.image}
+                alt={member.name}
+              />
+              <p className="absolute bottom-3 text-white">{member.name}</p>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
