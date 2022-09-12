@@ -3,8 +3,8 @@ import React from "react";
 const Table = ({title, tableHeader, tableData, requiredProperties, buttons}) => {
 
     return (
-        <div className='flex flex-col justify-center min-h-screen'>
-            <h1 className='mt-[56px] mb-[56px] text-4xl'>{`Administrar ${title}`}</h1>
+        <div className='flex flex-col justify-center'>
+            <h1 className='mt-[56px] mb-[56px] text-4xl text-center'>{`Administrar ${title}`}</h1>
             {tableData.length > 0 ? (
                 <table className='w-3/4 self-center mb-[56px]'>
                     <thead className='font-semibold bg-slate-400'>
@@ -25,10 +25,10 @@ const headerGenerate = (tableHeader) => {
     return (
         <>
             {tableHeader.map(head => {
-                return <td className='border-collapse border border-slate-500 p-3'>{head}</td>
+                return <td key={head} className='border-collapse border border-slate-500 p-3 text-center'>{head}</td>
             })}
-            <td className='border-collapse border border-slate-500 p-3'>Fecha</td>
-            <td className='border-collapse border border-slate-500 p-3'>Acciones</td>
+            <td className='border-collapse border border-slate-500 p-3 text-center'>Fecha</td>
+            <td className='border-collapse border border-slate-500 p-3 text-center'>Acciones</td>
         </>
     )
 }
@@ -38,12 +38,12 @@ const bodyGenerate = (tableData, requiredProperties, buttons) => {
         <>
             {tableData.map(row => {
                 return (
-                    <tr className='border-collapse border border-slate-500 p-3'>
+                    <tr key={row.property} className='border-collapse border border-slate-500 p-3 text-center'>
                         {Object.entries(row).map(([property, value]) => {
                             const dateProperty = property === 'createdAt';
                             if(verifyRequiredProperties(requiredProperties, property)) {
                                 return (
-                                    <td className='border-collapse border border-slate-500 p-3'>
+                                    <td key={property} className='border-collapse border border-slate-500 p-3'>
                                         {dateProperty ? (
                                             new Date(value).toLocaleDateString()
                                         ) : (
