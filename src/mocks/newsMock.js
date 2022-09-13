@@ -5,7 +5,8 @@ const News = [
         image: 'https://images.unsplash.com/photo-1508779544523-dd1b27685be3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
         content: 'CLorem ipsum dolor sit amet, consectetur adipiscing elit. Adipiscing proin risus cursus elementum sed massa cras sapien placerat. Diam integer congue id amet proin. Ullamcorper nibh sit vitae ac',
         categoryId: 1,
-        type: 'new'
+        type: 'new',
+        createdAt: new Date()
     },
     {
         id: 2,
@@ -13,7 +14,8 @@ const News = [
         image: 'https://images.unsplash.com/photo-1508779544523-dd1b27685be3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
         content: 'CLorem ipsum dolor sit amet, consectetur adipiscing elit. Adipiscing proin risus cursus elementum sed massa cras sapien placerat. Diam integer congue id amet proin. Ullamcorper nibh sit vitae ac CLorem ipsum dolor sit amet, consectetur adipiscing elit. Adipiscing proin risus cursus elementum sed massa cras sapien placerat. Diam integer congue id amet proin. Ullamcorper nibh sit vitae ac',
         categoryId: 1,
-        type: 'new'
+        type: 'new',
+        createdAt: new Date()
     },
     {
         id: 3,
@@ -21,7 +23,8 @@ const News = [
         image: 'https://images.unsplash.com/photo-1508779544523-dd1b27685be3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
         content: 'CLorem ipsum dolor sit amet, consectetur adipiscing elit. Adipiscing proin risus cursus elementum sed massa cras sapien placerat. Diam integer congue id amet proin. Ullamcorper nibh sit vitae ac',
         categoryId: 1,
-        type: 'new'
+        type: 'new',
+        createdAt: new Date()
     },
     {
         id: 1,
@@ -29,7 +32,8 @@ const News = [
         image: 'https://images.unsplash.com/photo-1508779544523-dd1b27685be3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
         content: 'CLorem ipsum dolor sit amet, consectetur adipiscing elit. Adipiscing proin risus cursus elementum sed massa cras sapien placerat. Diam integer congue id amet proin. Ullamcorper nibh sit vitae ac',
         categoryId: 1,
-        type: 'new'
+        type: 'new',
+        createdAt: new Date()
     },
     {
         id: 2,
@@ -37,7 +41,8 @@ const News = [
         image: 'https://images.unsplash.com/photo-1508779544523-dd1b27685be3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
         content: 'CLorem ipsum dolor sit amet, consectetur adipiscing elit. Adipiscing proin risus cursus elementum sed massa cras sapien placerat. Diam integer congue id amet proin. Ullamcorper nibh sit vitae ac CLorem ipsum dolor sit amet, consectetur adipiscing elit. Adipiscing proin risus cursus elementum sed massa cras sapien placerat. Diam integer congue id amet proin. Ullamcorper nibh sit vitae ac',
         categoryId: 1,
-        type: 'new'
+        type: 'new',
+        createdAt: new Date()
     },
     {
         id: 3,
@@ -45,7 +50,8 @@ const News = [
         image: 'https://images.unsplash.com/photo-1508779544523-dd1b27685be3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
         content: 'CLorem ipsum dolor sit amet, consectetur adipiscing elit. Adipiscing proin risus cursus elementum sed massa cras sapien placerat. Diam integer congue id amet proin. Ullamcorper nibh sit vitae ac',
         categoryId: 1,
-        type: 'new'
+        type: 'new',
+        createdAt: new Date()
     },
     {
         id: 3,
@@ -53,7 +59,8 @@ const News = [
         image: 'https://images.unsplash.com/photo-1508779544523-dd1b27685be3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
         content: 'CLorem ipsum dolor sit amet, consectetur adipiscing elit. Adipiscing proin risus cursus elementum sed massa cras sapien placerat. Diam integer congue id amet proin. Ullamcorper nibh sit vitae ac',
         categoryId: 1,
-        type: 'new'
+        type: 'new',
+        createdAt: new Date()
     },
 ]
 
