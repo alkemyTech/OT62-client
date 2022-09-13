@@ -1,6 +1,7 @@
 import React from "react";
 import image from "../../images/image-2.png";
 import member1 from "../../images/member-1.png";
+import novedad1 from '../../images/novedad-1.png'
 
 const Home = () => {
   const members = [
@@ -50,13 +51,13 @@ const Home = () => {
   const news = [
     {
       id: "1",
-      img: image,
+      img: novedad1,
       content:
         "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi et sed ullam numquam odio corporis magni quam, in minus quas vero dolores, omnis ipsa fugiat saepe aperiam nesciunt recusandae qui suscipit nobis explicabo excepturi voluptatibus unde laboriosam. Earum, quisquam deserunt?",
     },
     {
       id: "2",
-      img: image,
+      img: novedad1,
       content:
         "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi et sed ullam numquam odio corporis magni quam, in minus quas vero dolores, omnis ipsa fugiat saepe aperiam nesciunt recusandae qui suscipit nobis explicabo excepturi voluptatibus unde laboriosam. Earum, quisquam deserunt?",
     },
@@ -136,6 +137,32 @@ const Home = () => {
               <p className="text-sm max-h-24 overflow-hidden">
                 {member.content}
               </p>
+            </div>
+          ))}
+        </div>
+      </div>
+      {/* NOVEDADES */}
+      <div className="w-10/12 mx-auto mb-8">
+        <div className="sm:flex justify-between">
+          <h2 className="text-2xl font-bold">Últimas Novedades</h2>
+          <p className="text-sm text-gray-500 my-2">Ver todos &gt;</p>
+        </div>
+        <div className="flex gap-6 my-6">
+          {news.map((news) => (
+            <div key={news.id} className="flex gap-4 bg-blue-300 p-5 w-2/4 h-60 rounded-2xl">
+              <div className="w-96">
+                <img
+                  className="rounded-2xl  object-cover"
+                  src={news.img}
+                  alt="Nombre"
+                />
+              </div>
+              <div className="flex flex-col justify-between w-full">
+                <p className="text-left h-36 overflow-hidden font-sm">{news.content}</p>
+                <button className="bg-blue-600 rounded-lg text-white h-9 shadow-xl hover:bg-blue-800">
+                  Ver novedad
+                </button>
+              </div>
             </div>
           ))}
         </div>
