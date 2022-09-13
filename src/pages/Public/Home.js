@@ -61,6 +61,18 @@ const Home = () => {
       content:
         "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi et sed ullam numquam odio corporis magni quam, in minus quas vero dolores, omnis ipsa fugiat saepe aperiam nesciunt recusandae qui suscipit nobis explicabo excepturi voluptatibus unde laboriosam. Earum, quisquam deserunt?",
     },
+    {
+      id: "3",
+      img: novedad1,
+      content:
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi et sed ullam numquam odio corporis magni quam, in minus quas vero dolores, omnis ipsa fugiat saepe aperiam nesciunt recusandae qui suscipit nobis explicabo excepturi voluptatibus unde laboriosam. Earum, quisquam deserunt?",
+    },
+    {
+      id: "4",
+      img: novedad1,
+      content:
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi et sed ullam numquam odio corporis magni quam, in minus quas vero dolores, omnis ipsa fugiat saepe aperiam nesciunt recusandae qui suscipit nobis explicabo excepturi voluptatibus unde laboriosam. Earum, quisquam deserunt?",
+    },
   ];
   return (
     <div>
@@ -71,17 +83,16 @@ const Home = () => {
               <h1 className="text-2xl sm:text-3xl font-bold text-center md:text-start mb-6">
                 Hola! Bienvenidx
               </h1>
-              <p className="w-5/6 ">
+              <p className="w-6/7 mr-auto ml-auto md:ml-0">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab
                 dolore tempora omnis amet. Beatae, placeat similique iusto eos
                 nihil temporibus, qui vel aliquam voluptates animi blanditiis
                 natus ab quidem perferendis! Neque ab iusto eveniet hic suscipit
                 eius aspernatur cumque. Nostrum tempore itaque qui impedit
                 assumenda at praesentium quo consequuntur dolorum dolores earum
-                sapiente exercitationem dolore, nemo debitis quae optio porro!
               </p>
             </div>
-            <button className="self-start py-2 px-5 rounded-xl font-semibold text-white bg-red-600">
+            <button className="mx-auto md:mx-0 self-start py-2 px-5 rounded-xl font-semibold text-white bg-red-600">
               Contactanos
             </button>
           </div>
@@ -96,7 +107,7 @@ const Home = () => {
       <div className="w-10/12 mx-auto mb-8">
         <div className="sm:flex justify-between">
           <h2 className="text-2xl font-bold">Nuestro Staff</h2>
-          <p className="text-sm text-gray-500 my-2">Ver todos &gt;</p>
+          <button className="text-sm text-gray-500 my-2">Ver todos &gt;</button>
         </div>
         <div className="my-6 grid grid-cols-1 sm:grid sm:grid-cols-3 lg:grid lg:grid-cols-5 md:grid md:grid-cols-4 gap-4">
           {members.map((member) => (
@@ -118,12 +129,12 @@ const Home = () => {
       <div className="w-10/12 mx-auto mb-8">
         <div className="sm:flex justify-between">
           <h2 className="text-2xl font-bold">Testimonios</h2>
-          <p className="text-sm text-gray-500 my-2">Ver todos &gt;</p>
+          <button className="text-sm text-gray-500 my-2">Ver todos &gt;</button>
         </div>
         <div className="my-6 grid grid-cols-1 sm:grid sm:grid-cols-3 lg:grid lg:grid-cols-5 md:grid md:grid-cols-4 gap-4">
           {testimonials.map((member) => (
             <div
-              className="flex w-11/12 items-center sm:items-start sm:w-full flex-col p-4 rounded-2xl bg-yellow-200 border border-yellow-300 h-52"
+              className="mx-auto flex w-11/12 items-center sm:items-start sm:w-full flex-col p-4 rounded-2xl bg-yellow-200 border border-yellow-300 h-52"
               key={member.id}
             >
               <img
@@ -134,7 +145,7 @@ const Home = () => {
               <p className="font-bold text-center sm:text-start">
                 {member.name}
               </p>
-              <p className="text-sm max-h-24 overflow-hidden">
+              <p className="text-sm max-h-20 text-center sm:text-start overflow-hidden">
                 {member.content}
               </p>
             </div>
@@ -145,20 +156,20 @@ const Home = () => {
       <div className="w-10/12 mx-auto mb-8">
         <div className="sm:flex justify-between">
           <h2 className="text-2xl font-bold">Últimas Novedades</h2>
-          <p className="text-sm text-gray-500 my-2">Ver todos &gt;</p>
+          <button className="text-sm text-gray-500 my-2">Ver todos &gt;</button>
         </div>
-        <div className="flex gap-6 my-6">
+        <div className="flex flex-col md:grid md:grid-cols-2 h-fit gap-4 lg:gap-8 my-6">
           {news.map((news) => (
-            <div key={news.id} className="flex gap-4 bg-blue-300 p-5 w-2/4 h-60 rounded-2xl">
-              <div className="w-96">
-                <img
-                  className="rounded-2xl  object-cover"
-                  src={news.img}
-                  alt="Nombre"
-                />
-              </div>
-              <div className="flex flex-col justify-between w-full">
-                <p className="text-left h-36 overflow-hidden font-sm">{news.content}</p>
+            <div key={news.id} className="mx-auto flex-col sm:flex sm:flex-row h-fit gap-6 bg-blue-300 p-5 w-full h-60 rounded-2xl">
+              {/* <div> */}
+              <img
+                className="rounded-2xl h-36 w-36 lg:h-48 lg:w-48 mx-auto object-contain"
+                src={news.img}
+                alt="Novedad"
+              />
+              {/* </div> */}
+              <div className="flex gap-4 flex-col justify-between w-full">
+                <p className="mt-4 sm:mt-0 text-left h-24 overflow-hidden font-sm">{news.content}</p>
                 <button className="bg-blue-600 rounded-lg text-white h-9 shadow-xl hover:bg-blue-800">
                   Ver novedad
                 </button>
