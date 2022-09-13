@@ -5,13 +5,13 @@ import testimonialsData from '../../../mocks/testimonialsMock';
 const TestimonialsBackoffice = () => {
     return (
         <>
-            <Table 
-                title='testimonios' 
-                tableHeader={['Nombre', 'Contenido']} 
-                tableData={testimonialsData} 
-                requiredProperties={['name', 'content', 'createdAt']} 
+            <Table
+                title='testimonios'
+                tableHeader={['Nombre', 'Contenido']}
+                tableData={testimonialsData}
+                requiredProperties={['name', 'content', 'createdAt']}
                 buttons={[
-                    { type: 'Editar', handler: handleEdit},
+                    { type: 'Editar', handler: handleEdit },
                     { type: 'Eliminar', handler: handleDelete }
                 ]}
             />
