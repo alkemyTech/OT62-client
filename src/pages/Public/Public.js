@@ -15,9 +15,7 @@ const Public = () => {
             {/* Header */}
             <Routes>
                 <Route path="/" element={<Home />} />
-                {/* public routes */}
                 <Route path="/news" element={<NewsList />} />
-                <Route path="/" element={<h1>Public Routes</h1>} />
                 <Route path="/news" element={<News />} />
                 <Route path="/news/:id" element={<NewsDetail />} />
                 <Route path="/actividades/:id" element={<ActivityDetail />} />
