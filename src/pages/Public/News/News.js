@@ -10,7 +10,7 @@ const News = () => {
                 <ul className="flex flex-wrap gap-4 w-full justify-center">
                     {news.length > 0 ? 
                         news.map((element) => {
-                            return <NewsCard element={element} title={'testimonial'}/>
+                            return <NewsCard element={element} title={'new'}/>
                         })
                     :
                         <p className='bg-yellow-200 p-1 pr-16 pl-16 font-semibold text-yellow-700 shadow-2xl'>No hay novedades</p>
