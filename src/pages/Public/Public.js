@@ -8,7 +8,6 @@ import Contacts from './Contacts';
 import Nosotros from './Nosotros';
 import ActivityDetail from "../../Components/Activities/ActivityDetail";
 
-
 const Public = () => {
     return (
         <>
