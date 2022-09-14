@@ -2,8 +2,11 @@ import React from "react";
 import image from "../../images/image-2.png";
 import member1 from "../../images/member-1.png";
 import novedad1 from '../../images/novedad-1.png'
+import Slider from '../../Components/Slides/Slider'
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate()
   const members = [
     { id: "1", name: "Julian Fernandez", image: member1 },
     { id: "2", name: "Julian Fernandez", image: member1 },
@@ -76,7 +79,7 @@ const Home = () => {
   ];
   return (
     <div>
-      <div className="w-10/12 my-7 mx-auto pb-16">
+      <div className="w-10/12 my-7 mx-auto pb-8">
         <div className="flex flex-col md:flex-row my-14 gap-6">
           <div className="flex flex-col justify-between gap-4">
             <div>
@@ -92,7 +95,7 @@ const Home = () => {
                 assumenda at praesentium quo consequuntur dolorum dolores earum
               </p>
             </div>
-            <button className="mx-auto md:mx-0 self-start py-2 px-5 rounded-xl font-semibold text-white bg-red-600">
+            <button onClick={() => navigate('/contacts')} className="mx-auto md:mx-0 self-start py-2 px-5 rounded-xl font-semibold text-white bg-red-600">
               Contactanos
             </button>
           </div>
@@ -103,11 +106,12 @@ const Home = () => {
           />
         </div>
       </div>
+      <Slider />
       {/* STAFF */}
-      <div className="w-10/12 mx-auto mb-8">
+      <div className="w-10/12 mx-auto my-8">
         <div className="sm:flex justify-between">
           <h2 className="text-2xl font-bold">Nuestro Staff</h2>
-          <button className="text-sm text-gray-500 my-2">Ver todos &gt;</button>
+          <button onClick={() => navigate('/nosotros')} className="text-sm text-gray-500 my-2">Ver todos &gt;</button>
         </div>
         <div className="my-6 grid grid-cols-1 sm:grid sm:grid-cols-3 lg:grid lg:grid-cols-5 md:grid md:grid-cols-4 gap-4">
           {members.map((member) => (
@@ -129,7 +133,7 @@ const Home = () => {
       <div className="w-10/12 mx-auto mb-8">
         <div className="sm:flex justify-between">
           <h2 className="text-2xl font-bold">Testimonios</h2>
-          <button className="text-sm text-gray-500 my-2">Ver todos &gt;</button>
+          <button onClick={() => navigate('/testimonials')} className="text-sm text-gray-500 my-2">Ver todos &gt;</button>
         </div>
         <div className="my-6 grid grid-cols-1 sm:grid sm:grid-cols-3 lg:grid lg:grid-cols-5 md:grid md:grid-cols-4 gap-4">
           {testimonials.map((member) => (
@@ -156,7 +160,7 @@ const Home = () => {
       <div className="w-10/12 mx-auto mb-8">
         <div className="sm:flex justify-between">
           <h2 className="text-2xl font-bold">Últimas Novedades</h2>
-          <button className="text-sm text-gray-500 my-2">Ver todos &gt;</button>
+          <button onClick={() => navigate('/news')} className="text-sm text-gray-500 my-2">Ver todos &gt;</button>
         </div>
         <div className="flex flex-col md:grid md:grid-cols-2 h-fit gap-4 lg:gap-8 my-6">
           {news.map((news) => (
@@ -170,7 +174,7 @@ const Home = () => {
               {/* </div> */}
               <div className="flex gap-4 flex-col justify-between w-full">
                 <p className="mt-4 sm:mt-0 text-left h-24 overflow-hidden font-sm">{news.content}</p>
-                <button className="bg-blue-600 rounded-lg text-white h-9 shadow-xl hover:bg-blue-800">
+                <button onClick={() => navigate(`/news/${news.id}`)} className="bg-blue-600 rounded-lg text-white h-9 shadow-xl hover:bg-blue-800">
                   Ver novedad
                 </button>
               </div>
