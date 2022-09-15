@@ -1,7 +1,8 @@
 import React from "react";
 import { Field, Form } from "formik";
 import { Link } from "react-router-dom";
-import Header from "../../Campaigns/School/Header";
+import Header from "../../../Components/Header/Header";
+
 function Login() {
   return (
     <div className="flex flex-col absolute h-full w-full">

@@ -1,6 +1,6 @@
 import React from "react";
 import { Field, Form, ErrorMessage } from "formik";
-import Header from "../../Campaigns/School/Header";
+import Header from "../../../Components/Header/Header";
 function SignUp() {
   return (
     <div className="flex flex-col absolute h-full w-full">
