@@ -1,0 +1,61 @@
+import React from "react";
+import { Field, Form } from "formik";
+import { Link } from "react-router-dom";
+import Header from "../../Campaigns/School/Header";
+function Login() {
+  return (
+    <div className="flex flex-col absolute h-full w-full">
+      <Header />
+      <div className="flex  justify-center h-full">
+        <div className="w-2/4 flex flex-col justify-center items-center">
+          <div className="w-9/12 mb-8">
+            <h6>Bienvenido</h6>
+            <h3 className="text-3xl">Inicia sesión en tu cuenta!</h3>
+          </div>
+          <div className="w-9/12">
+            <Form>
+              <Field
+                className="w-10/12 h-3/5 border border-solid rounded-lg border-gray-400 mb-6 p-2.5"
+                id="email"
+                name="email"
+                type="email"
+                placeholder="Email"
+              />
+
+              <Field
+                className="w-10/12 border border-solid rounded-lg border-gray-400 mb-6 p-2.5"
+                id="password"
+                name="password"
+                type="password"
+                placeholder="Contraseña"
+              />
+
+              <div className="w-10/12 border bg-red-600 rounded-lg p-2.5 text-center">
+                <button
+                  type="submit"
+                  className="text-center text-white text-sm"
+                >
+                  Inicia sesión
+                </button>
+              </div>
+            </Form>
+          </div>
+          <div className="relative top-1/4 right-9">
+            <p className="text-xl">
+              No tienes una cuenta? <Link to="/register-user" className="text-xl text-red-500">Registrate</Link>
+            </p>
+          </div>
+        </div>
+        
+        <img
+          className="w-3/6"
+          src="https://media.istockphoto.com/photos/united-through-their-diversity-picture-id614211848?k=20&m=614211848&s=612x612&w=0&h=XJA_xolV3AOcgiOvYEHX2dlRqCFhMNaceRh7oB6A5Hg="
+          alt="login-img"
+        />
+
+      </div>
+    </div>
+  );
+}
+
+export default Login;
