@@ -7,12 +7,13 @@ import NewsDetail from '../../Components/News/NewsDetail';
 import Contacts from './Contacts';
 import Nosotros from './Nosotros';
 import ActivityDetail from "../../Components/Activities/ActivityDetail";
-
+import Header from "../../Campaigns/School/Header";
+import Footer from '../../Campaigns/School/Footer'
 
 const Public = () => {
     return (
         <>
-            {/* Header */}
+            <Header />
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/news" element={<NewsList />} />
@@ -22,7 +23,7 @@ const Public = () => {
                 <Route path='/contacts' element={<Contacts />} />
                 <Route path='/nosotros' element={<Nosotros />} />
             </Routes>
-            {/* Footer */}
+            <Footer />
         </>
     );
 };
