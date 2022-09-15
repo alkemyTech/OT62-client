@@ -1,3 +1,5 @@
+
+
 import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -18,11 +20,13 @@ import Backoffice from "./pages/Backoffice/Backoffice.js";
 import Contacts from "./pages/Public/Contacts.js";
 import Nosotros from "./pages/Public/Nosotros.js";
 
+
 function App() {
   return (
     <>
       <Router>
         <Routes>
+
           <Route path="/create-activity" element={<ActivitiesForm />} />
           <Route path="/create-category" element={<CategoriesForm />} />
           <Route path="/create-news" element={<NewsForm />} />
@@ -39,6 +43,10 @@ function App() {
           <Route path="/contacts" element={<Contacts />} />
           <Route path="/nosotros" element={<Nosotros />} />
           <Route path="/backoffice/" element={<Backoffice />} />
+
+          <Route path='/*' element={<Public />}/>
+          <Route path='/backoffice/*' element={<Backoffice />}/>
+
         </Routes>
       </Router>
     </>
