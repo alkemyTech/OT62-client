@@ -1,14 +1,9 @@
 import React from "react";
-<<<<<<< HEAD:src/pages/SignUp/SignUp.js
 import { Formik } from "formik";
-import Header from "../../Campaigns/School/Header";
 import * as Yup from "yup";
 import { registerFieldData } from "../../data/formsData";
 import DynamicForm from "../../Components/DynamicForm/DynamicForm";
-=======
-import { Field, Form, ErrorMessage } from "formik";
-import Header from "../../../Components/Header/Header";
->>>>>>> dev:src/pages/Public/SignUp/SignUp.js
+
 function SignUp() {
   return (
     <Formik
@@ -31,7 +26,6 @@ function SignUp() {
       }}
     >
       <div className="flex flex-col absolute h-full w-full">
-        <Header />
         <div className="flex flex-col items-center h-full justify-center">
           <div className="w-9/12 mb-8">
             <h3>Welcome</h3>
