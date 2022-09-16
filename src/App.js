@@ -1,7 +1,4 @@
-
-
 import React from "react";
-import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ActivitiesForm from "./Components/Activities/ActivitiesForm";
 import CategoriesForm from "./Components/Categories/CategoriesForm";
@@ -17,8 +14,6 @@ import SignUp from "./pages/SignUp/SignUp";
 import Login from "./pages/Login/Login";
 import Public from "./pages/Public/Public.js";
 import Backoffice from "./pages/Backoffice/Backoffice.js";
-import Contacts from "./pages/Public/Contacts.js";
-import Nosotros from "./pages/Public/Nosotros.js";
 
 
 function App() {
@@ -43,10 +38,8 @@ function App() {
           <Route path="/contacts" element={<Contacts />} />
           <Route path="/nosotros" element={<Nosotros />} />
           <Route path="/backoffice/" element={<Backoffice />} />
-
           <Route path='/*' element={<Public />}/>
           <Route path='/backoffice/*' element={<Backoffice />}/>
-
         </Routes>
       </Router>
     </>

@@ -1,8 +1,8 @@
 import React from "react";
-import image from "../../images/image-2.png";
-import member1 from "../../images/member-1.png";
-import novedad1 from '../../images/novedad-1.png'
-import Slider from '../../Components/Slides/Slider'
+import image from "../../../images/image-2.png";
+import member1 from "../../../images/member-1.png";
+import novedad1 from '../../../images/novedad-1.png'
+import Slider from '../../../Components/Slides/Slider';
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {

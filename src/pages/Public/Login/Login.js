@@ -1,9 +1,14 @@
 import React from "react";
 import { Formik } from "formik";
 import { Link } from "react-router-dom";
+<<<<<<< HEAD:src/pages/Login/Login.js
 import Header from "../../Campaigns/School/Header";
 import DynamicForm from "../../Components/DynamicForm/DynamicForm"
 import {loginFieldData} from "../../data/formsData"
+=======
+import Header from "../../../Components/Header/Header";
+
+>>>>>>> dev:src/pages/Public/Login/Login.js
 function Login() {
   return (
 
