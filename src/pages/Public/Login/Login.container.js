@@ -1,5 +1,5 @@
 import React from 'react';
-import FormikContainer from '../../Components/FormikContainer/FormikContainer.js'
+import FormikContainer from '../../../Components/FormikContainer/FormikContainer';
 import Login from "./Login"
 
 function LoginContainer (){
