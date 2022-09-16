@@ -1,14 +1,9 @@
 import React from "react";
 import { Formik } from "formik";
 import { Link } from "react-router-dom";
-<<<<<<< HEAD:src/pages/Login/Login.js
-import Header from "../../Campaigns/School/Header";
 import DynamicForm from "../../Components/DynamicForm/DynamicForm"
 import {loginFieldData} from "../../data/formsData"
-=======
-import Header from "../../../Components/Header/Header";
 
->>>>>>> dev:src/pages/Public/Login/Login.js
 function Login() {
   return (
 
@@ -24,7 +19,6 @@ function Login() {
 
 
     <div className="flex flex-col absolute h-full w-full">
-      <Header />
       <div className="flex  justify-center h-full">
         <div className="w-2/4 flex flex-col justify-center items-center">
           <div className="w-9/12 mb-8">
