@@ -1,5 +1,5 @@
 import React from 'react';
-import FormikContainer from '../../Components/FormikContainer/FormikContainer'
+import FormikContainer from '../../../Components/FormikContainer/FormikContainer';
 import SignUp from "./SignUp"
 import * as Yup from 'yup'
 function SignUpContainer (){
@@ -27,4 +27,4 @@ function SignUpContainer (){
         />
     )
 }
-export default SignUpContainer
+export default SignUpContainer;
