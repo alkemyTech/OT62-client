@@ -11,13 +11,15 @@ const Private = () => {
     return (
         <>
             <Header />
-            <Routes>
-                <Route path="/" element={<h1>Backoffice</h1>} />
-                <Route path="/testimonials" element={<TestimonialsBackoffice />} />
-                <Route path="/contacts" element={<ContactsBackoffice />} />
-                <Route path="/news" element={<NewsBackoffice />} />
-                <Route path="/activities" element={<ActivitiesBackoffice />} />
-            </Routes>
+            <div className="flex flex-col flex-grow justify-center">
+                <Routes>
+                    <Route path="/" element={<h1>Backoffice</h1>} />
+                    <Route path="/testimonials" element={<TestimonialsBackoffice />} />
+                    <Route path="/contacts" element={<ContactsBackoffice />} />
+                    <Route path="/news" element={<NewsBackoffice />} />
+                    <Route path="/activities/*" element={<ActivitiesBackoffice />} />
+                </Routes>
+            </div>
             <Footer />
         </>
     );

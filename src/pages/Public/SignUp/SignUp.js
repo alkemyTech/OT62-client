@@ -1,8 +1,8 @@
 import React from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { registerFieldData } from "../../data/formsData";
-import DynamicForm from "../../Components/DynamicForm/DynamicForm";
+import { registerFieldData } from "../../../data/formsData";
+import DynamicForm from "../../../Components/DynamicForm/DynamicForm";
 
 function SignUp() {
   return (

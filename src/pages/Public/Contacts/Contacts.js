@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import APICalls from '../../shared/APICalls';
+import APICalls from '../../../shared/APICalls';
 import { useState } from 'react';
 
 const Contacts = () => {

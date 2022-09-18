@@ -8,7 +8,9 @@ const Table = ({title, tableHeader, tableData, requiredProperties, buttons}) => 
             {tableData.length > 0 ? (
                 <table className='w-3/4 self-center mb-[56px]'>
                     <thead className='font-semibold bg-slate-400'>
-                        {headerGenerate(tableHeader)}
+                        <tr>
+                            {headerGenerate(tableHeader)}
+                        </tr>
                     </thead>
                     <tbody>
                         {bodyGenerate(tableData, requiredProperties, buttons)}
@@ -25,10 +27,10 @@ const headerGenerate = (tableHeader) => {
     return (
         <>
             {tableHeader.map(head => {
-                return <td key={head} className='border-collapse border border-slate-500 p-3 text-center'>{head}</td>
+                return <th key={head} className='border-collapse border border-slate-500 p-3 text-center'>{head}</th>
             })}
-            <td className='border-collapse border border-slate-500 p-3 text-center'>Fecha</td>
-            <td className='border-collapse border border-slate-500 p-3 text-center'>Acciones</td>
+            <th className='border-collapse border border-slate-500 p-3 text-center'>Fecha</th>
+            <th className='border-collapse border border-slate-500 p-3 text-center'>Acciones</th>
         </>
     )
 }
@@ -43,7 +45,7 @@ const bodyGenerate = (tableData, requiredProperties, buttons) => {
                             const dateProperty = property === 'createdAt';
                             if(verifyRequiredProperties(requiredProperties, property)) {
                                 return (
-                                    <td key={property} className='border-collapse border border-slate-500 p-3'>
+                                    <td className='border-collapse border border-slate-500 p-3'>
                                         {dateProperty ? (
                                             new Date(value).toLocaleDateString()
                                         ) : (
@@ -56,7 +58,7 @@ const bodyGenerate = (tableData, requiredProperties, buttons) => {
                         })}
                         <td className='border-collapse border border-slate-500 p-3'>
                         {buttons.map(({ type, handler }) => (
-                            <button className={`${type === 'Editar' ? 'bg-blue-500 hover:bg-blue-400' : 'bg-red-500 hover:bg-red-400'} w-full m-1 font-semibold text-white`} key={type} onClick={() => handler(handler)}>
+                            <button className={`${type === 'Editar' ? 'bg-blue-500 hover:bg-blue-400' : 'bg-red-500 hover:bg-red-400'} w-full m-1 font-semibold text-white`} key={type} onClick={() => handler(row)}>
                                 {type}
                             </button>
                         ))}
