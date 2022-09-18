@@ -39,4 +39,9 @@ export const loginFieldData = [
     type: "password",
     placeholder: "Password",
   },
-]
+];
+
+export const activitiesFieldData = {
+  name: '',
+  content: ''
+}
