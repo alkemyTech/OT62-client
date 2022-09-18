@@ -6,8 +6,8 @@ import Home from "./Home/Home";
 import News from './News/News';
 import Contacts from './Contacts/Contacts';
 import Nosotros from './Nosotros/Nosotros';
-import Login from './Login/Login.container';
-import SignUp from './SignUp/Signup.container';
+import Login from './Login/Login';
+import SignUp from './SignUp/SignUp';
 import NewsDetail from '../../Components/News/NewsDetail';
 import ActivityDetail from "../../Components/Activities/ActivityDetail";
 
@@ -15,16 +15,18 @@ const Public = () => {
     return (
         <>
             <Header />
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/news" element={<News />} />
-                <Route path="/news/:id" element={<NewsDetail />} />
-                <Route path="/actividades/:id" element={<ActivityDetail />} />
-                <Route path='/contacts' element={<Contacts />} />
-                <Route path='/nosotros' element={<Nosotros />} />
-                <Route path="/login-user" element={<Login />} />
-                <Route path="/register-user" element={<SignUp />} />
-            </Routes>
+                <div className="flex flex-grow h-full">
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/news" element={<News />} />
+                        <Route path="/news/:id" element={<NewsDetail />} />
+                        <Route path="/actividades/:id" element={<ActivityDetail />} />
+                        <Route path='/contacts' element={<Contacts />} />
+                        <Route path='/nosotros' element={<Nosotros />} />
+                        <Route path="/login-user" element={<Login />} />
+                        <Route path="/register-user" element={<SignUp />} />
+                    </Routes>
+                </div>
             <Footer />
         </>
     );

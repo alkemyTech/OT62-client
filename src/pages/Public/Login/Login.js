@@ -1,8 +1,8 @@
 import React from "react";
 import { Formik } from "formik";
 import { Link } from "react-router-dom";
-import DynamicForm from "../../Components/DynamicForm/DynamicForm"
-import {loginFieldData} from "../../data/formsData"
+import DynamicForm from "../../../Components/DynamicForm/DynamicForm"
+import {loginFieldData} from "../../../data/formsData"
 
 function Login() {
   return (
