@@ -12,6 +12,8 @@ const BackofficeForm  = () => {
 
     if (location.state.data) {
         var data = location.state.data;
+        console.log(data);
+        console.log(`/${route}/${data.id}`);
     }
 
     const onSubmit = async (values) => {
@@ -64,6 +66,10 @@ const generateInputs = (value, handleChange) => {
                 <TextField value={value} handleChange={handleChange} key={value[0]}/>
             )
         case 'content':
+            return (
+                <ContentField value={value} handleChange={handleChange} key={value[0]}/>
+            )    
+        case 'description':
             return (
                 <ContentField value={value} handleChange={handleChange} key={value[0]}/>
             )    

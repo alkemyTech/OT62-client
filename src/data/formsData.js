@@ -45,3 +45,8 @@ export const activitiesFieldData = {
   name: '',
   content: ''
 }
+
+export const categoriesFieldData ={
+  name: '',
+  description: ''
+}
