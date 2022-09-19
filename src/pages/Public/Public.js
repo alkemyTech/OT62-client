@@ -10,6 +10,7 @@ import Login from './Login/Login';
 import SignUp from './SignUp/SignUp';
 import NewsDetail from '../../Components/News/NewsDetail';
 import ActivityDetail from "../../Components/Activities/ActivityDetail";
+import Activities from './Activities/Activities'
 
 const Public = () => {
     return (
@@ -20,7 +21,8 @@ const Public = () => {
                         <Route path="/" element={<Home />} />
                         <Route path="/news" element={<News />} />
                         <Route path="/news/:id" element={<NewsDetail />} />
-                        <Route path="/actividades/:id" element={<ActivityDetail />} />
+                        <Route path="/activities" element={<Activities />} />
+                        <Route path="/activities/:id" element={<ActivityDetail />} />
                         <Route path='/contacts' element={<Contacts />} />
                         <Route path='/nosotros' element={<Nosotros />} />
                         <Route path="/login-user" element={<Login />} />
