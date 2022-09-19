@@ -44,6 +44,9 @@ const TestimonialsBackoffice = () => {
       }
     })
   }
+  const handleDelete = async (values) => {
+    await APICalls.delete(`/testimonials/${values.id}`)
+  }
   return (
     <Routes>
       <Route path="/" element={
@@ -65,10 +68,6 @@ const TestimonialsBackoffice = () => {
       <Route path='/edit' element={<BackofficeForm />} />
     </Routes>
   )
-}
-
-const handleDelete = () => {
-  console.log('delete')
 }
 
 export default TestimonialsBackoffice;
