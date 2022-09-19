@@ -18,17 +18,17 @@ function Login() {
 >
 
 
-    <div className="flex flex-col absolute h-full w-full">
-      <div className="flex  justify-center h-full">
+    <div className="flex m-auto flex-col h-full w-full">
+      <div className="flex text-center justify-center h-full">
         <div className="w-2/4 flex flex-col justify-center items-center">
           <div className="w-9/12 mb-8">
             <h6>Bienvenido</h6>
             <h3 className="text-3xl">Inicia sesión en tu cuenta!</h3>
           </div>
           <div className="w-9/12">
-          <DynamicForm buttonName="Inicia sesion" data={loginFieldData} />
+          <DynamicForm className="m-auto" buttonName="Inicia sesion" data={loginFieldData} />
           </div>
-          <div className="relative top-1/4 right-9">
+          <div className="mt-12">
             <p className="text-xl">
               No tienes una cuenta? <Link to="/register-user" className="text-xl text-red-500">Registrate</Link>
             </p>

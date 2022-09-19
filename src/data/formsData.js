@@ -50,3 +50,24 @@ export const categoriesFieldData ={
   name: '',
   description: ''
 }
+
+export const contactsData = [
+  {
+    id: "name",
+    name: "name",
+    type: "text",
+    placeholder: "Nombre",
+  },
+  {
+    id: "email",
+    name: "email",
+    type: "email",
+    placeholder: "Email",
+  },
+  {
+    id: "message",
+    name: "message",
+    type: "text",
+    placeholder: "Mensaje",
+  },
+];

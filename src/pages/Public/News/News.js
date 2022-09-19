@@ -1,12 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import NewsCard from '../../../Components/Cards/Card.js';
-import news from '../../../mocks/newsMock';
+import newsAPI from '.././../../shared/APICalls';
 
 const News = () => {
+    const [ news, setNews ] = useState([]);
+
+    useEffect(() => {
+        const getNews = async () => {
+            const res = await newsAPI.get('/news')
+            setNews(res.data.allNews)
+        }
+        getNews();
+    }, []);
+
     return (
-        <div className='min-h-full'>
+        <div className='min-h-full m-auto'>
             <h1 className='font-bold text-4xl mb-[54px] mt-[54px] text-center'>Novedades</h1>
-            <div className='flex w-3/4 m-auto mb-[54px]'>
+            <div className='flex m-auto mb-[54px]'>
                 <ul className="flex flex-wrap gap-4 w-full justify-center">
                     {news.length > 0 ? 
                         news.map((element) => {
