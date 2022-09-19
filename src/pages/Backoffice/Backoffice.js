@@ -6,6 +6,7 @@ import TestimonialsBackoffice from "./Testimonials/TestimonialsBackoffice";
 import ContactsBackoffice from './Contacts/ContactsBackoffice'
 import NewsBackoffice from "./News/NewsBackoffice";
 import ActivitiesBackoffice from "./Activities/ActivitiesBackoffice";
+import CategoriesBackoffice from "./Categories/CategoriesBackoffice";
 import HomeBackoffice from "./Home/HomeBackoffice";
 
 const Private = () => {
@@ -19,6 +20,7 @@ const Private = () => {
                     <Route path="/contacts" element={<ContactsBackoffice />} />
                     <Route path="/news" element={<NewsBackoffice />} />
                     <Route path="/activities/*" element={<ActivitiesBackoffice />} />
+                    <Route path="/categories/*" element={<CategoriesBackoffice />} />
                     <Route path="/organization" element={<HomeBackoffice />} />
                 </Routes>
             </div>
