@@ -73,7 +73,11 @@ const generateInputs = (value, handleChange) => {
         case 'content':
             return (
                 <ContentField value={value} handleChange={handleChange} key={value[0]}/>
-            )
+            )    
+        case 'description':
+            return (
+                <ContentField value={value} handleChange={handleChange} key={value[0]}/>
+            )    
         case 'welcomeText':
             return (
                 <ContentField value={value} handleChange={handleChange} key={value[0]}/>

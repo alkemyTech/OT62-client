@@ -46,6 +46,11 @@ export const activitiesFieldData = {
   content: ''
 }
 
+export const categoriesFieldData ={
+  name: '',
+  description: ''
+}
+
 export const contactsData = [
   {
     id: "name",
