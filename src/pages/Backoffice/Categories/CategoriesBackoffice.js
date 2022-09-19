@@ -12,7 +12,6 @@ const CategoriesBackOffice = () => {
     useEffect(() => {
         const getCategories = async () => {
             const res = await APICalls.get('/categories')
-            console.log(res.data.data);
             setCategories(res.data.data)
         }
         getCategories();
