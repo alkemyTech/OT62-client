@@ -5,16 +5,22 @@ import valueTranslate from "../utils/valueTranslate";
 import APICalls from "../../shared/APICalls";
 import { ContentField, TextField } from "./FieldsType";
 
-const BackofficeForm  = () => {
+const BackofficeForm  = (props) => {
     const location = useLocation();
     const navigate = useNavigate();
-    const {fields, method, route, title } = location.state;
 
-    if (location.state.data) {
-        var data = location.state.data;
+    if(location.state) {
+        var {fields, method, route, title, validation } = location.state;
+        if (location.state.data) {
+            var data = location.state.data;
+        }
+    } else if(props) {
+        var {fields, method, route, title, validation } = props;
+        var data = fields;
     }
 
     const onSubmit = async (values) => {
+        console.log(values)
         switch (method) {
             case 'POST':
                 await APICalls.post(`/${route}`, values)
@@ -32,6 +38,7 @@ const BackofficeForm  = () => {
             <Formik
                 initialValues={data ? data : fields}
                 onSubmit={onSubmit}
+                validationSchema={validation}
             >
                 {({ handleChange, handleSubmit }) => (
                     <div className="flex justify-center h-full">
@@ -45,7 +52,7 @@ const BackofficeForm  = () => {
                                     </>
                                 )
                             })}
-                            <div className="flex flex-wrap gap-2">
+                            <div className="flex flex-wrap gap-2 mt-6">
                                 <button type='submit' className="self-center py-1.5 px-2 sm:py-1.5 sm:px-4 border bg-red-600 rounded-3xl text-white">Aceptar</button>
                                 <button type="button" className="py-1 px-2 sm:py-1.5 sm:px-4 self-center border-black border rounded-3xl" onClick={() => navigate(`/backoffice/${route}`)}>Cancelar</button>
                             </div>
@@ -66,7 +73,11 @@ const generateInputs = (value, handleChange) => {
         case 'content':
             return (
                 <ContentField value={value} handleChange={handleChange} key={value[0]}/>
-            )    
+            )
+        case 'welcomeText':
+            return (
+                <ContentField value={value} handleChange={handleChange} key={value[0]}/>
+            )  
         default:
             break;
     }
