@@ -13,7 +13,7 @@ const Header = () => {
     {
       id: '2',
       title: 'Nosotros',
-      route: '/nosotros'
+      route: '/members'
     },
     {
       id: '3',
@@ -22,18 +22,18 @@ const Header = () => {
     },
     {
       id: '4',
+      title: 'Actividades',
+      route: '/activities'
+    },
+    {
+      id: '5',
       title: 'Testimonios',
       route: '/testimonials'
     },
     {
-      id: '5',
+      id: '6',
       title: 'Contacto',
       route: '/contacts'
-    },
-    {
-      id: '6',
-      title: 'Contribuye',
-      route: '/contribuye'
     }
   ]
   return (
