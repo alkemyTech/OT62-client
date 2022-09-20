@@ -13,7 +13,7 @@ const Header = () => {
     {
       id: '2',
       title: 'Nosotros',
-      route: '/members'
+      route: '/nosotros'
     },
     {
       id: '3',

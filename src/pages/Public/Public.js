@@ -26,7 +26,7 @@ const Public = () => {
                         <Route path="/activities" element={<Activities />} />
                         <Route path="/activities/:id" element={<ActivityDetail />} />
                         <Route path='/contacts' element={<Contacts />} />
-                        <Route path='/members' element={<Nosotros />} />
+                        <Route path='/nosotros' element={<Nosotros />} />
                         <Route path="/testimonials" element={<Testimonials />} />
                         <Route path="/testimonials-create" element={<CreateTestimonial />} />
                         <Route path="/login-user" element={<Login />} />
