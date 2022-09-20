@@ -6,8 +6,8 @@ import image from "../../../images/image-2.png";
 import Slider from '../../../Components/Slides/Slider';
 
 const Home = () => {
-  const [ organization, setOrganization ] = useState({});
-  const [ news, setNews ] = useState([]);
+  const [organization, setOrganization] = useState({});
+  const [news, setNews] = useState([]);
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -24,7 +24,7 @@ const Home = () => {
     getNews();
   }, []);
 
-  if(JSON.stringify(organization) === '{}') {
+  if (JSON.stringify(organization) === '{}') {
     return <p>error</p>
   } else {
     return (
