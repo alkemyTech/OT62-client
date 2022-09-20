@@ -42,7 +42,7 @@ function SignUp() {
       }}
     >
       <div className="flex my-6 m-auto flex-col h-full w-full">
-        <div className="flex flex-col items-center h-full justify-center">
+        <div className="flex flex-col items-center h-full justify-center pt-20">
           <div className="w-9/12 mb-8">
             <h3>Welcome</h3>
             <h3 className="text-3xl">Create your account.</h3>
