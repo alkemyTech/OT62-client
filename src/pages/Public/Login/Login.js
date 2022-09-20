@@ -1,4 +1,4 @@
-import React, {useState} from"react";
+import React, { useState } from "react";
 import { Formik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import DynamicForm from "../../../Components/DynamicForm/DynamicForm";
@@ -6,7 +6,7 @@ import { loginFieldData } from "../../../data/formsData";
 import APICalls from "../../../shared/APICalls";
 function Login() {
   const navigate = useNavigate();
-  const[errorMessage,setErrorMessage] = useState(null)
+  const [errorMessage, setErrorMessage] = useState(null);
   return (
     <Formik
       initialValues={{
@@ -16,13 +16,16 @@ function Login() {
       onSubmit={async (values) => {
         try {
           const response = await APICalls.post("/auth/login", values);
-          sessionStorage.setItem("token", response.config.headers.Authorization);
+          sessionStorage.setItem(
+            "token",
+            response.config.headers.Authorization
+          );
           navigate("/");
         } catch (error) {
-          if(error){
-            setErrorMessage("There's been a problem while logging in")
+          if (error) {
+            setErrorMessage("There's been a problem while logging in");
             console.log(error.message);
-          }  
+          }
         }
       }}
     >
@@ -35,7 +38,9 @@ function Login() {
             </div>
             <div className="w-9/12">
               <DynamicForm buttonName="Inicia sesion" data={loginFieldData} />
-            {errorMessage && <div className="text-red-600 pt-2.5">{errorMessage}</div> }
+              {errorMessage && (
+                <div className="text-red-600 pt-2.5">{errorMessage}</div>
+              )}
             </div>
             <div className="relative top-1/4 right-9">
               <p className="text-xl">

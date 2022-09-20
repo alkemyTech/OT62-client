@@ -41,7 +41,7 @@ function SignUp() {
         }
       }}
     >
-      <div className="flex flex-col absolute h-full w-full">
+      <div className="flex my-6 m-auto flex-col h-full w-full">
         <div className="flex flex-col items-center h-full justify-center">
           <div className="w-9/12 mb-8">
             <h3>Welcome</h3>
