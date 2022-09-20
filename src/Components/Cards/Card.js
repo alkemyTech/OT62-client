@@ -45,6 +45,14 @@ const Card = ({element, title}) => {
                         </div>
                     </div>
                 )
+            case 'backoffice':
+                return (
+                    <div className="flex flex-col items-center justify-center shadow-lg p-8 w-48 h-fit border hover:bg-gray-100 hover:cursor-pointer hover:scale-105" onClick={() => navigate(`/backoffice/${element.route}`)}>
+                        <h1>{element.name}</h1>
+                        <img src={element.image} alt={element.name} className='w-20 my-2'/>
+                        {/* <button onClick={() => navigate(`/backoffice/${element.route}`)} className='bg-green-400 hover:bg-green-600 py-1 px-4'>Ir</button> */}
+                    </div>
+                )
             default:
                 break;
         }

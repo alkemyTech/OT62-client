@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import DynamicForm from '../../../Components/DynamicForm/DynamicForm';
 import { contactsData } from '../../../data/formsData';
 import { Formik } from 'formik';
+import Swal from 'sweetalert2';
 
 const Contacts = () => {
   const navigate = useNavigate()
@@ -22,8 +23,24 @@ const Contacts = () => {
         message: Yup.string().required("Required")
       })}
       onSubmit = { async (values) => {
-        await APICalls.post('/contacts', values);
-        alert("Muchas gracias, hemos recibido su mensaje!");
+        try {
+          await APICalls.post('/contacts', values);
+          Swal.fire({
+            position: 'bottom-end',
+            icon: 'success',
+            title: 'Contacto añadido con exito',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        } catch (error) {
+          Swal.fire({
+            position: 'bottom-end',
+            icon: 'error',
+            title: 'Ha ocurrido un error',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }
       }}
     >
       <div className='flex flex-col gap-4 w-10/12 my-7 mx-auto items-center self-center'>

@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import DynamicForm from '../../../Components/DynamicForm/DynamicForm';
 import { testimonialsData } from '../../../data/formsData';
 import { Formik } from 'formik';
+import Swal from 'sweetalert2';
 
 const CreateTestimonial = () => {
   const navigate = useNavigate()
@@ -17,11 +18,27 @@ const CreateTestimonial = () => {
       }}
       validationSchema={Yup.object({
         name: Yup.string().required("Obligatorio"),
-        message: Yup.string().required("Obligatorio")
+        content: Yup.string().required("Obligatorio")
       })}
       onSubmit = { async (values) => {
-        await APICalls.post('/testimonials', values);
-        alert("Muchas gracias, hemos recibido su testimonio!");
+        try {
+          await APICalls.post('/testimonials', values);
+          Swal.fire({
+            position: 'bottom-end',
+            icon: 'success',
+            title: 'Testimonio creado con exito',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        } catch (error) {
+          Swal.fire({
+            position: 'bottom-end',
+            icon: 'error',
+            title: 'Ha ocurrido un error',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }
       }}
     >
       <div className='flex flex-col gap-4 w-10/12 my-7 mx-auto items-center self-center'>
