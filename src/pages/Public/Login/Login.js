@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik } from "formik";
-import { Link } from "react-router-dom";
-import DynamicForm from "../../../Components/DynamicForm/DynamicForm"
-import {loginFieldData} from "../../../data/formsData"
-
+import { Link, useNavigate } from "react-router-dom";
+import DynamicForm from "../../../Components/DynamicForm/DynamicForm";
+import { loginFieldData } from "../../../data/formsData";
+import APICalls from "../../../shared/APICalls";
 function Login() {
+  const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState(null);
   return (
 
 <Formik
@@ -12,9 +14,21 @@ function Login() {
       email: '',
       password: ''
   }}
-   onSubmit = {((values) =>{
-      console.log(values)
-  })}
+  onSubmit={async (values) => {
+    try {
+      const response = await APICalls.post("/auth/login", values);
+      sessionStorage.setItem(
+        "token",
+        response.data.token
+      );
+      navigate("/");
+    } catch (error) {
+      if (error) {
+        setErrorMessage("There's been a problem while logging in");
+        console.log(error.message);
+      }
+    }
+  }}
 >
 
     <div className="flex flex-col h-full w-full my-8 md:my-0">
@@ -40,9 +54,7 @@ function Login() {
 
       </div>
     </div>
-
-</Formik>
-
+    </Formik>
   );
 }
 
