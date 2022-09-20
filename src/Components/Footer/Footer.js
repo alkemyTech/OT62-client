@@ -1,5 +1,8 @@
 import React from 'react';
 import Logo from '../../images/Logo.png'
+import Facebook from '../../images/facebook.png'
+import Instagram from '../../images/instagram.png'
+import LinkedIn from '../../images/linkedin.png'
 
 const Footer = () => {
   const links = [
@@ -48,11 +51,10 @@ const Footer = () => {
           ))}
         </ul>
         <div className='flex flex-col gap-2.5 mt-7 py-0 px-2.5'>
-          <div className="flex justify-center gap-4">
-            <div className="w-8 h-8 bg-gray-800 rounded-3xl"></div>
-            <div className="w-8 h-8 bg-gray-800 rounded-3xl"></div>
-            <div className="w-8 h-8 bg-gray-800 rounded-3xl"></div>
-            <div className="w-8 h-8 bg-gray-800 rounded-3xl"></div>
+          <div className="flex justify-center gap-6 align-center">
+            <img className="w-8 h-8 object-contain" src={Facebook} alt='Facebook' />
+            <img className="w-8 h-8 object-contain" src={Instagram} alt='Instagram' />
+            <img className="w-8 h-8 object-contain" src={LinkedIn} alt='LinkedIn' />
           </div>
           <p className='text-center'>2022 by Alkemy. All Rights Reserved.</p>
         </div>
