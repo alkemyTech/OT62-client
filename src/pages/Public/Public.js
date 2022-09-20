@@ -11,6 +11,8 @@ import SignUp from './SignUp/SignUp';
 import NewsDetail from '../../Components/News/NewsDetail';
 import ActivityDetail from "../../Components/Activities/ActivityDetail";
 import Activities from './Activities/Activities'
+import Testimonials from "./Testimonials/Testimonials";
+import CreateTestimonial from "./Testimonials/CreateTestimonial";
 
 const Public = () => {
     return (
@@ -25,6 +27,8 @@ const Public = () => {
                         <Route path="/activities/:id" element={<ActivityDetail />} />
                         <Route path='/contacts' element={<Contacts />} />
                         <Route path='/nosotros' element={<Nosotros />} />
+                        <Route path="/testimonials" element={<Testimonials />} />
+                        <Route path="/testimonials-create" element={<CreateTestimonial />} />
                         <Route path="/login-user" element={<Login />} />
                         <Route path="/register-user" element={<SignUp />} />
                     </Routes>
