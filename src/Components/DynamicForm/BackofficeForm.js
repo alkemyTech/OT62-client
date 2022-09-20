@@ -66,6 +66,10 @@ const BackofficeForm  = (props) => {
 
 const generateInputs = (value, handleChange) => {
     switch (value[0]) {
+        case 'title':
+            return (
+                <TextField value={value} handleChange={handleChange} key={value[0]}/>
+            )
         case 'name':
             return (
                 <TextField value={value} handleChange={handleChange} key={value[0]}/>
@@ -77,6 +81,10 @@ const generateInputs = (value, handleChange) => {
         case 'description':
             return (
                 <ContentField value={value} handleChange={handleChange} key={value[0]}/>
+            )
+        case 'category':
+            return (
+                <TextField value={value} handleChange={handleChange} key={value[0]}/>
             )    
         case 'welcomeText':
             return (

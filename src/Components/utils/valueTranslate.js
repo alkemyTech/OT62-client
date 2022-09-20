@@ -4,6 +4,11 @@ const valueTranslate = (value, place) => {
     let placeholder = '';
 
     switch (value[0]) {
+        case 'title':
+            label = 'Título:'
+            type = 'text'
+            placeholder = 'Inserte un título'
+            break;
         case 'name':
             label = 'Nombre:'
             type = 'text'
@@ -13,6 +18,11 @@ const valueTranslate = (value, place) => {
             label = 'Contenido:'
             type = 'text'
             placeholder = 'Inserte un contenido'
+            break;
+        case 'category':
+            label = 'Categoría:'
+            type = 'text'
+            placeholder = 'Inserte una categoría'
             break;
         case 'welcomeText':
             label = 'Texto de bienvenida:'
