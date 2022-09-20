@@ -12,6 +12,9 @@ module.exports = {
         'dark-blue': '#0038FF',
       }
     },
+    screens: {
+      'xss': '500px'
+    }
   },
   plugins: [
     require('@tailwindcss/line-clamp'),
