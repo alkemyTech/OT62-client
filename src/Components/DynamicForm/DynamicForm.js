@@ -16,7 +16,7 @@ const DynamicForm  = ({data, buttonName}) => {
               <ErrorMessage name={elem.name}/>
              </div>
         )))}
-        <div className="m-auto w-[60%] border bg-red-600 rounded-lg p-2.5 text-center">
+        <div className="w-[60%] border bg-red-600 rounded-lg p-2.5 text-center">
               <button className="text-center text-white text-sm" type="submit">
                 {buttonName}
               </button>
