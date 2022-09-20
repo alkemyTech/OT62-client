@@ -6,13 +6,13 @@ const Card = ({element, title}) => {
         switch (title) {
             case 'new':
                 return (
-                    <div className="grid grid-cols-2 rounded-2xl bg-light-blue border-[1px] border-dark-blue max-w-[448px] min-w-[448px] max-h-[233px] min-h-[233px] text-xs items-center shadow-xl">
-                        <div className="flex max-w-full h-full justify-center items-center p-[16px]">
-                            <img className="rounded-2xl h-full w-full object-cover" src={element.image} alt={element.name}/>
+                    <div className="flex flex-col rounded-2xl bg-light-blue border-[1px] border-dark-blue max-w-[448px] min-h-[233px] text-xs items-center shadow-xl overflow-hidden sm:grid sm:grid-cols-2 sm:max-h-[233px]">
+                        <div className="flex justify-center items-center h-full">
+                            <img className="object-cover w-full h-full" src={element.image} alt={element.name}/>
                         </div>
-                        <div className="flex flex-col h-full justify-between p-[16px] pl-0">
+                        <div className="flex flex-col justify-between px-[16px] pb-[16px] h-full w-full">
                             <p></p>
-                            <p className="text-left h-2/4 line-clamp-[6] font-medium">{element.content}</p>
+                            <p className="text-left h-4/4 line-clamp-[6] font-semibold text-xs">{element.content}</p>
                             <button className="bg-dark-blue rounded-lg text-white h-9 shadow-xl hover:bg-blue-800" onClick={() => navigate(`/news/${element.id}`)}>Ver novedad</button>
                         </div>
                     </div>
@@ -27,8 +27,9 @@ const Card = ({element, title}) => {
                 )
             case 'member': 
                 return (
-                    <div className="rounded-2xl border-[1px] max-w-[212px] min-w-[212px] max-h-[254px] min-h-[254px] text-xs shadow-xl bg-cover flex items-end justify-center pb-[41px]" style={{backgroundImage: `url(${element.image})`}}>
-                        <p className="flex font-bold text-white text-2xl">{element.name}</p>
+                    <div className="rounded-2xl border-[1px] max-w-[212px] min-w-[212px] max-h-[234px] min-h-[234px] text-xs shadow-xl bg-cover flex flex-col justify-end pb-5 text-center" style={{backgroundImage: `url(${element.image})`}}>
+                        <p className="font-bold text-white text-2xl">{element.name}</p>
+                        <p className="text-white font-bold">{element.rol}</p>
                     </div>
                 )
             case 'activity':
