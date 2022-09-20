@@ -1,0 +1,52 @@
+import React from "react";
+import { Formik } from "formik";
+import { Link } from "react-router-dom";
+import DynamicForm from "../../../Components/DynamicForm/DynamicForm"
+import {loginFieldData} from "../../../data/formsData"
+
+function Login() {
+  return (
+
+<Formik
+    initialValues ={{
+      email: '',
+      password: ''
+  }}
+   onSubmit = {((values) =>{
+      console.log(values)
+  })}
+>
+
+
+    <div className="flex m-auto flex-col h-full w-full">
+      <div className="flex text-center justify-center h-full">
+        <div className="w-2/4 flex flex-col justify-center items-center">
+          <div className="w-9/12 mb-8">
+            <h6>Bienvenido</h6>
+            <h3 className="text-3xl">Inicia sesión en tu cuenta!</h3>
+          </div>
+          <div className="w-9/12">
+          <DynamicForm className="m-auto" buttonName="Inicia sesion" data={loginFieldData} />
+          </div>
+          <div className="mt-12">
+            <p className="text-xl">
+              No tienes una cuenta? <Link to="/register-user" className="text-xl text-red-500">Registrate</Link>
+            </p>
+          </div>
+        </div>
+        
+        <img
+          className="w-3/6"
+          src="https://media.istockphoto.com/photos/united-through-their-diversity-picture-id614211848?k=20&m=614211848&s=612x612&w=0&h=XJA_xolV3AOcgiOvYEHX2dlRqCFhMNaceRh7oB6A5Hg="
+          alt="login-img"
+        />
+
+      </div>
+    </div>
+
+</Formik>
+
+  );
+}
+
+export default Login;

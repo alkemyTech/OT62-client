@@ -1,5 +1,5 @@
 import React from "react";
-import member1 from "../../images/member-1.png";
+import member1 from "../../../images/member-1.png";
 
 const Nosotros = () => {
   const members = [
