@@ -1,10 +1,12 @@
 import React from 'react';
+import { useLocation } from "react-router-dom";
 import Logo from '../../images/Logo.png'
 import Facebook from '../../images/facebook.png'
 import Instagram from '../../images/instagram.png'
 import LinkedIn from '../../images/linkedin.png'
 
 const Footer = () => {
+  const { pathname } = useLocation();
   const links = [
     {
       id: '1',
@@ -37,6 +39,7 @@ const Footer = () => {
       route: '/contribuye'
     }
   ]
+  if(pathname === "/login-user" || pathname === "/register-user")return null
   return (
     <div className='bg-neutral-400 pt-12 pr-4 pb-16 pl-4'>
       <div className="flex flex-col items-center gap-8">

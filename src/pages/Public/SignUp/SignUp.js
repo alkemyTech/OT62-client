@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { registerFieldData } from "../../../data/formsData";
 import DynamicForm from "../../../Components/DynamicForm/DynamicForm";
-
+import { useNavigate } from "react-router-dom";
+import APICalls from "../../../shared/APICalls";
 function SignUp() {
+  const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [successMessage, setSuccessMessage] = useState(null);
   return (
     <Formik
       initialValues={{
@@ -21,8 +25,20 @@ function SignUp() {
           .required("Campo obligatorio")
           .min(6, "Contraseña demasiado corta - debe contener al menos 6 caracteres."),
       })}
-      onSubmit={(values) => {
-        console.log(values);
+      onSubmit={async (values) => {
+        try {
+          const response = await APICalls.post("/auth/register", values);
+          sessionStorage.setItem("token", response.config.headers.Authorization);
+          if (response.status === 200) {
+            setSuccessMessage(response.data.msg);
+          }
+          setTimeout(() => {
+            navigate("/");
+          }, 2000);
+        } catch (error) {
+          setErrorMessage("There was an error trying to register")
+          
+        }
       }}
     >
       <div className="flex h-full w-full my-8 md:my-0">
