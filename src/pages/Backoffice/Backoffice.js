@@ -8,6 +8,7 @@ import NewsBackoffice from "./News/NewsBackoffice";
 import ActivitiesBackoffice from "./Activities/ActivitiesBackoffice";
 import CategoriesBackoffice from "./Categories/CategoriesBackoffice";
 import HomeBackoffice from "./Home/HomeBackoffice";
+import BackofficeLayout from "./Layout/BackofficeLayout";
 
 const Private = () => {
     return (
@@ -15,7 +16,7 @@ const Private = () => {
             <Header />
             <div className="flex flex-col flex-grow justify-center">
                 <Routes>
-                    <Route path="/" element={<h1>Backoffice</h1>} />
+                    <Route path="/" element={<BackofficeLayout/>} />
                     <Route path="/testimonials/*" element={<TestimonialsBackoffice />} />
                     <Route path="/contacts" element={<ContactsBackoffice />} />
                     <Route path="/news" element={<NewsBackoffice />} />
