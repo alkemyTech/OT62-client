@@ -19,6 +19,14 @@ const valueTranslate = (value, place) => {
             type = 'text'
             placeholder = 'Introduzca un texto de bienvenida'
             break;
+        case 'text':
+            label = 'Titulo:'
+            type = 'text'
+            break;
+        case 'image':
+            label = 'Imagen:'
+            type = 'file'
+            break;
         default:
             break
     }
