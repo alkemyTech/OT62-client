@@ -71,3 +71,18 @@ export const contactsData = [
     placeholder: "Mensaje",
   },
 ];
+
+export const testimonialsData = [
+  {
+    id: "name",
+    name: "name",
+    type: "text",
+    placeholder: "Nombre",
+  },
+  {
+    id: "content",
+    name: "content",
+    type: "text",
+    placeholder: "Contenido",
+  },
+];

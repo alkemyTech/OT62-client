@@ -4,6 +4,7 @@ import { Form, Formik } from "formik";
 import valueTranslate from "../utils/valueTranslate";
 import APICalls from "../../shared/APICalls";
 import { ContentField, TextField } from "./FieldsType";
+import { postSweetAlert, putSweetAlert } from "../utils/sweetAlerts";
 
 const BackofficeForm  = (props) => {
     const location = useLocation();
@@ -20,13 +21,12 @@ const BackofficeForm  = (props) => {
     }
 
     const onSubmit = async (values) => {
-        console.log(values)
         switch (method) {
             case 'POST':
-                await APICalls.post(`/${route}`, values)
+                postSweetAlert(values, route)
                 break;
             case 'PUT':
-                await APICalls.put(`/${route}/${data.id}`, values)
+                putSweetAlert(values, route)
                 break;
             default:
                 break;

@@ -4,7 +4,7 @@ import Table from '../../../Components/Table/Table';
 import activitiesAPI from '../../../shared/APICalls';
 import BackofficeForm from "../../../Components/DynamicForm/BackofficeForm";
 import { activitiesFieldData } from '../../../data/formsData';
-import APICalls from "../../../shared/APICalls";
+import { deleteSweetAlert } from '../../../Components/utils/sweetAlerts';
 
 const ActivitiesBackoffice = () => {
     const [ activities, setActivities ] = useState([]);
@@ -31,7 +31,7 @@ const ActivitiesBackoffice = () => {
     }
     
     const handleDelete = async (values) => {
-        await APICalls.delete(`/activities/${values.id}`)
+        deleteSweetAlert(values, 'activities')
     }
     
     const handleCreate = () => {
@@ -59,7 +59,7 @@ const ActivitiesBackoffice = () => {
                             { type: 'Eliminar', handler: handleDelete }
                     ]}
                     />
-                    <button className='self-center py-1.5 px-2 sm:py-1.5 sm:px-4 border bg-red-600 rounded-3xl text-white mb-10' onClick={handleCreate}>Agregar Actividad</button>
+                    <button className='px-2.5 py-1 w-fit bg-red-600 text-white border rounded-lg hover:bg-red-700 self-center mb-16' onClick={handleCreate}>Agregar Actividad</button>
                 </>
             }/>
             <Route path='/create' element={<BackofficeForm />} />

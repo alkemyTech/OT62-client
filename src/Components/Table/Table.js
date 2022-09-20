@@ -3,7 +3,7 @@ import React from "react";
 const Table = ({title, tableHeader, tableData, requiredProperties, buttons}) => {
 
     return (
-        <div className='flex flex-col justify-center'>
+        <div className='flex flex-col justify-center overflow-auto min-w-fit'>
             <h1 className='mt-[56px] mb-[56px] text-4xl text-center'>{`Administrar ${title}`}</h1>
             {tableData.length > 0 ? (
                 <table className='w-3/4 self-center mb-[56px]'>
