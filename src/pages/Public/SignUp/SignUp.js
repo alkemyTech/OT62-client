@@ -32,9 +32,6 @@ function SignUp() {
           if (response.status === 200) {
             setSuccessMessage(response.data.msg);
           }
-          setTimeout(() => {
-            navigate("/");
-          }, 2000);
         } catch (error) {
           setErrorMessage("There was an error trying to register")
           
