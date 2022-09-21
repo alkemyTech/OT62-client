@@ -3,6 +3,7 @@ import Table from '../../../Components/Table/Table';
 import { Routes, Route, useNavigate } from "react-router-dom";
 import BackofficeForm from "../../../Components/DynamicForm/BackofficeForm";
 import APICalls from "../../../shared/APICalls";
+import { deleteSweetAlert } from "../../../Components/utils/sweetAlerts";
 
 const TestimonialsBackoffice = () => {
   const [testimonials, setTestimonials] = useState([]);
@@ -33,6 +34,9 @@ const TestimonialsBackoffice = () => {
       }
     })
   }
+  const handleDelete = async (values) => {
+    deleteSweetAlert(values, 'testimonials')
+  }
   const handleEdit = (data) => {
     navigate('edit', {
       state: {
@@ -44,9 +48,7 @@ const TestimonialsBackoffice = () => {
       }
     })
   }
-  const handleDelete = async (values) => {
-    await APICalls.delete(`/testimonials/${values.id}`)
-  }
+
   return (
     <Routes>
       <Route path="/" element={
