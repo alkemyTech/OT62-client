@@ -34,6 +34,9 @@ const TestimonialsBackoffice = () => {
       }
     })
   }
+  const handleDelete = async (values) => {
+    deleteSweetAlert(values, 'testimonials')
+  }
   const handleEdit = (data) => {
     navigate('edit', {
       state: {
@@ -45,9 +48,7 @@ const TestimonialsBackoffice = () => {
       }
     })
   }
-  const handleDelete = async (values) => {
-    deleteSweetAlert(values, 'testimonials')
-  }
+
   return (
     <Routes>
       <Route path="/" element={

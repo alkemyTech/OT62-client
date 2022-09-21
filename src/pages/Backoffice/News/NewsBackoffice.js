@@ -3,6 +3,7 @@ import Table from '../../../Components/Table/Table';
 import { Routes, Route, useNavigate } from "react-router-dom";
 import BackofficeForm from "../../../Components/DynamicForm/BackofficeForm";
 import APICalls from "../../../shared/APICalls";
+import { deleteSweetAlert } from "../../../Components/utils/sweetAlerts";
 
 const NewsBackoffice = () => {
 
@@ -48,7 +49,7 @@ const NewsBackoffice = () => {
         })
     }
     const handleDelete = async (values) => {
-        await APICalls.delete(`/news/${values.id}`)
+        deleteSweetAlert(values, 'news')
     }
     return (
         <Routes>
