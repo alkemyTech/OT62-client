@@ -1,32 +1,69 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import Table from '../../../Components/Table/Table'
-import { contactsMock } from '../../../mocks/contactsMock'
+import contactsAPI from '../../../shared/APICalls';
+import { deleteSweetAlert } from '../../../Components/utils/sweetAlerts';
+import { contactsFieldData } from '../../../data/formsData';
+import BackofficeForm from '../../../Components/DynamicForm/BackofficeForm';
 
 const ContactsBackoffice = () => {
-  const handleEdit = () => {
-    console.log('edit')
-  }
+  const [ contacts, setContacts ] = useState([]);
+    const navigate = useNavigate();
 
-  const handleDelete = () => {
-    console.log('delete')
-  }
-  const handleCreate = () => {
-    console.log('create')
-  }
+    useEffect(() => {
+        const getContacts = async () => {
+            const res = await contactsAPI.get('/Contacts')
+            setContacts(res.data.data)
+        }
+        getContacts();
+    }, []);
+
+    const handleEdit = (data) => {
+        navigate('edit', {
+            state: {
+                fields: contactsFieldData,
+                data,
+                method: 'PUT',
+                route: 'contacts',
+                title: 'Editar contacto'
+            }
+        })
+    }
+    
+    const handleDelete = async (values) => {
+        deleteSweetAlert(values, 'contacts')
+    }
+    
+    const handleCreate = () => {
+        navigate('create', {
+            state: {
+                fields: contactsFieldData,
+                method: 'POST',
+                route: 'contacts',
+                title: 'Crear contacto'
+            }
+        })
+    }
+
+
   return (
-    <>
-      <Table
-        title='Contactos'
-        tableHeader={['Name', 'Phone', 'Email']}
-        tableData={contactsMock}
-        requiredProperties={['name', 'email', 'phone', 'createdAt']}
-        buttons={[
-          { type: 'Editar', handler: handleEdit },
-          { type: 'Eliminar', handler: handleDelete }
-        ]}
-      />
-      <button className='px-2.5 py-1 w-fit bg-red-600 text-white border rounded-lg hover:bg-red-700 self-center mb-16' onClick={handleCreate}>Agregar Contacto</button>
-    </>
+    <Routes>
+      <Route path='/' element={
+          <>
+            <Table
+              title='Contactos'
+              tableHeader={['Name', 'Phone', 'Email']}
+              tableData={contacts}
+              requiredProperties={['name', 'email', 'phone', 'createdAt']}
+              buttons={[
+                { type: 'Editar', handler: handleEdit },
+                { type: 'Eliminar', handler: handleDelete }
+              ]}
+            />
+        </>
+      } />
+      <Route path='/edit' element={<BackofficeForm />} />
+    </Routes>
   )
 }
 

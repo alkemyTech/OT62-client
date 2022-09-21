@@ -5,10 +5,16 @@ import { registerFieldData } from "../../../data/formsData";
 import DynamicForm from "../../../Components/DynamicForm/DynamicForm";
 import { useNavigate } from "react-router-dom";
 import APICalls from "../../../shared/APICalls";
+import { resultAlert } from '../../../Components/utils/sweetAlerts';
+import { useUserToggleContext } from '../../../context/UserProvider';
+
+
 function SignUp() {
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState(null);
   const [successMessage, setSuccessMessage] = useState(null);
+  const setUser = useUserToggleContext()
+
   return (
     <Formik
       initialValues={{
@@ -28,13 +34,14 @@ function SignUp() {
       onSubmit={async (values) => {
         try {
           const response = await APICalls.post("/auth/register", values);
-          sessionStorage.setItem("token", response.config.headers.Authorization);
-          if (response.status === 200) {
-            setSuccessMessage(response.data.msg);
-          }
+          sessionStorage.setItem("token", response.data.token);
+          resultAlert('Registrado con exito, redireccionando a incio...', 'success');
+          setUser(response.data.data)
+          setTimeout(function(){
+            navigate("/");
+          }, 2000);
         } catch (error) {
-          setErrorMessage("There was an error trying to register")
-          
+          resultAlert('Algo ha salido mal', 'error')
         }
       }}
     >

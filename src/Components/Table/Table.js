@@ -10,22 +10,22 @@ const Table = ({title, tableHeader, tableData, requiredProperties, buttons}) => 
                     <table className='w-3/4 self-center mb-[56px]'>
                         <thead className='font-semibold bg-slate-400'>
                             <tr>
-                                {headerGenerate(tableHeader)}
+                                {headerGenerate(tableHeader, title)}
                             </tr>
                         </thead>
                         <tbody>
-                            {bodyGenerate(tableData, requiredProperties, buttons)}
+                            {bodyGenerate(tableData, requiredProperties, buttons, title)}
                         </tbody>
                     </table>
                 ) : (
-                    <p className='flex bg-yellow-200 p-1 pr-16 pl-16 font-semibold text-yellow-700 shadow-2xl w-fit m-auto mt-0 mb-0'>{`No hay ${title}`}</p>
+                    <p className='flex bg-yellow-200 p-1 pr-16 pl-16 font-semibold text-yellow-700 shadow-2xl w-fit m-auto mt-0 mb-[56px]'>{`No hay ${title}`}</p>
                 )}
             </div>
         </div>
     )
 };
 
-const headerGenerate = (tableHeader) => {
+const headerGenerate = (tableHeader, title) => {
     return (
         <>
             {tableHeader.map(head => {

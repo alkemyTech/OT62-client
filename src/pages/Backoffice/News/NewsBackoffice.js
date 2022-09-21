@@ -57,14 +57,14 @@ const NewsBackoffice = () => {
                     <Table 
                         title='Novedades' 
                         tableHeader={['Nombre', 'Imagen']} 
-                        tableData={newsData} 
+                        tableData={news} 
                         requiredProperties={['name', 'image', 'createdAt']} 
                         buttons={[
                             { type: 'Editar', handler: handleEdit},
                             { type: 'Eliminar', handler: handleDelete }
                         ]}
                     />
-                    <button className='bg-blue-500 hover:bg-blue-400 pt-4 pb-4 pl-8 pr-8 shadow-xl text-white font-semibold flex m-auto' onClick={handleCreate}>Agregar Novedad</button>
+                    <button className='px-2.5 py-1 w-fit bg-red-600 text-white border rounded-lg hover:bg-red-700 self-center mb-16' onClick={handleCreate}>Agregar Novedad</button>
                 </>
             } />
             <Route path='/create' element={<BackofficeForm />} />

@@ -27,7 +27,7 @@ const HomeBackoffice = () => {
         )
     }else {
         return (
-            <BackofficeForm fields={homeData} method='PUT' route='organization' title='Editar home' validation={validation}/>
+            <BackofficeForm fields={homeData} method='PUT' route='organization' path='/backoffice' title='Editar home' validation={validation}/>
         )
     }
 }
