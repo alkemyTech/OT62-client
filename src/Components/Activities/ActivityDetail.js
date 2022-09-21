@@ -16,15 +16,17 @@ const ActivityDetail = () => {
 
     return (
         <>
-            <div className='w-full'>
-                <img src={activity.image} alt="img" className='w-full h-[500px] object-cover'/>
-                <div className='w-1/2 flex justify-center flex-col m-auto mb-10 mt-10'>
-                    <h2 className='my-3 font-bold text-2xl'>{activity.name}</h2>
-                    <p>{activity.content}</p>
+             <div className='w-full flex flex-col sm:flex-row'>
+                <div>
+                    <img src={activity.image} alt="img" className='w-full object-cover h-full'/>
                 </div>
-                <button className='my-3 w-1/2 flex justify-center flex-col m-auto'>
-                    <Link to="/contribuir" className="bg-red-500 p-2 rounded-xl text-white">Ir al inicio</Link>
-                </button>
+                <div className='w-1/2 flex justify-center flex-col text-center m-auto my-3'>
+                    <h2 className='my-2 font-bold text-2xl'>{activity.name}</h2>
+                    <p className='my-4 md:px-6'>{activity.content}</p>
+                    <button className='flex items-center justify-center my-2'>
+                        <Link to="/" className="bg-red-500 p-2 rounded-xl text-white">Ir al inicio</Link>
+                    </button>
+                </div>
             </div>
         </>
     );

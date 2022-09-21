@@ -1,23 +1,25 @@
 import React from 'react'
 import {Form, Field, ErrorMessage } from 'formik';
+
 const DynamicForm  = ({data, buttonName}) => {
-    
     return (  
-      <Form>
+      <Form className='flex flex-col w-full items-center'>
         {(data.map((elem, index) => (
-             <div key={index}>
+             <div key={index} className='flex flex-col w-full'>
              <Field 
-                 className="w-3/5 h-3/5 border border-solid rounded-lg border-gray-400 mb-6 mr-8 p-2.5"
+                 className="m-auto border border-solid rounded-lg border-gray-400 p-2.5 w-full sm:w-[60%]"
                    id={elem.id}
                    name={elem.name}
                    type={elem.type}
                    placeholder={elem.placeholder} 
              />
-              <ErrorMessage name={elem.name}/>
+             <p className='text-red-400 font-semibold mb-6 text-center'>
+                <ErrorMessage name={elem.name}/>
+             </p>
              </div>
         )))}
-        <div className="w-[50%] border bg-red-600 rounded-lg p-2.5 text-center">
-              <button className="text-center text-white text-sm" type="submit">
+        <div className="w-full text-center sm:w-[60%] sm:self-center">
+              <button className="bg-red-600 text-center text-white text-sm w-full h-full rounded-lg p-2.5 hover:bg-red-700" type="submit">
                 {buttonName}
               </button>
             </div>

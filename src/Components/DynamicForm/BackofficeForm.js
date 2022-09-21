@@ -2,8 +2,8 @@ import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Form, Formik } from "formik";
 import valueTranslate from "../utils/valueTranslate";
-import APICalls from "../../shared/APICalls";
-import { ContentField, TextField } from "./FieldsType";
+import { ContentField, TextField, ImageField } from "./FieldsType";
+import { postSweetAlert, putSweetAlert } from "../utils/sweetAlerts";
 
 const BackofficeForm  = (props) => {
     const location = useLocation();
@@ -20,13 +20,12 @@ const BackofficeForm  = (props) => {
     }
 
     const onSubmit = async (values) => {
-        console.log(values)
         switch (method) {
             case 'POST':
-                await APICalls.post(`/${route}`, values)
+                postSweetAlert(values, route)
                 break;
             case 'PUT':
-                await APICalls.put(`/${route}/${data.id}`, values)
+                putSweetAlert(values, route)
                 break;
             default:
                 break;
@@ -40,7 +39,7 @@ const BackofficeForm  = (props) => {
                 onSubmit={onSubmit}
                 validationSchema={validation}
             >
-                {({ handleChange, handleSubmit }) => (
+                {({ handleChange, handleSubmit, values }) => (
                     <div className="flex justify-center h-full">
                         <Form onSubmit={handleSubmit} className="flex flex-col w-3/4 items-center p-6 border-[1px] shadow-lg m-7">
                             <h1 className="text-3xl mb-4 font-semibold">{title}</h1>
@@ -48,7 +47,7 @@ const BackofficeForm  = (props) => {
                                 return (
                                     <>
                                         <label key={index} className="font-semibold mb-1">{valueTranslate(value, 'label')}</label>
-                                        {generateInputs(value, handleChange)}
+                                        {generateInputs(value, handleChange, values)}
                                     </>
                                 )
                             })}
@@ -64,9 +63,14 @@ const BackofficeForm  = (props) => {
     )
 };
 
-const generateInputs = (value, handleChange) => {
+const generateInputs = (value, handleChange, values) => {
     switch (value[0]) {
+        case 'title':
+            return (
+                <TextField value={value} handleChange={handleChange} key={value[0]}/>
+            )
         case 'name':
+        case 'text':
             return (
                 <TextField value={value} handleChange={handleChange} key={value[0]}/>
             )
@@ -77,11 +81,19 @@ const generateInputs = (value, handleChange) => {
         case 'description':
             return (
                 <ContentField value={value} handleChange={handleChange} key={value[0]}/>
+            )
+        case 'category':
+            return (
+                <TextField value={value} handleChange={handleChange} key={value[0]}/>
             )    
         case 'welcomeText':
             return (
                 <ContentField value={value} handleChange={handleChange} key={value[0]}/>
-            )  
+            )
+        case 'image':
+            return (
+                <ImageField value={value} key={value[0]} values={values}/>
+            )
         default:
             break;
     }
