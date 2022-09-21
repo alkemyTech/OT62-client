@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import TestimonialsCard from '../../../Components/Cards/Card.js';
 import testimonialAPI from '.././../../shared/APICalls';
 
 const Testimonials = () => {
     const [ testimonials, setTestimonials ] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const getNews = async () => {
@@ -26,6 +28,9 @@ const Testimonials = () => {
                         <p className='bg-yellow-200 p-1 pr-16 pl-16 font-semibold text-yellow-700 shadow-2xl'>No hay testimonios</p>
                     }
                 </ul>
+            </div>
+            <div className='flex justify-center'>
+                <button onClick={() => navigate('/testimonials-create')} className='my-2 px-2.5 py-1 w-fit bg-red-600 text-white border rounded-lg hover:bg-red-700'>Dejanos tu testimonio</button>
             </div>
         </div>
     );

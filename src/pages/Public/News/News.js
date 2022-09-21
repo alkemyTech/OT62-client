@@ -17,7 +17,7 @@ const News = () => {
             }finally {
                 setTimeout(function(){
                     setLoading(false)
-                }, 2000);
+                }, 500);
             }
         }
         getNews();

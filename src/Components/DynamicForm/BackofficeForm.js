@@ -10,12 +10,12 @@ const BackofficeForm  = (props) => {
     const navigate = useNavigate();
 
     if(location.state) {
-        var {fields, method, route, title, validation } = location.state;
+        var {fields, method, route, title, validation, path } = location.state;
         if (location.state.data) {
             var data = location.state.data;
         }
     } else if(props) {
-        var {fields, method, route, title, validation } = props;
+        var {fields, method, route, title, validation, path } = props;
         var data = fields;
     }
 
@@ -53,7 +53,7 @@ const BackofficeForm  = (props) => {
                             })}
                             <div className="flex flex-wrap gap-2 mt-6">
                                 <button type='submit' className="self-center py-1.5 px-2 sm:py-1.5 sm:px-4 border bg-red-600 rounded-3xl text-white">Aceptar</button>
-                                <button type="button" className="py-1 px-2 sm:py-1.5 sm:px-4 self-center border-black border rounded-3xl" onClick={() => navigate(`/backoffice/${route}`)}>Cancelar</button>
+                                <button type="button" className="py-1 px-2 sm:py-1.5 sm:px-4 self-center border-black border rounded-3xl" onClick={() => navigate(`${path ? path : `/backoffice/${route}`}`)}>Cancelar</button>
                             </div>
                         </Form>
                     </div>

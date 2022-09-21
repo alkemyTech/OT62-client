@@ -54,7 +54,7 @@ const TestimonialsBackoffice = () => {
       <Route path="/" element={
         <>
           <Table
-            title='testimonios'
+            title='Testimonios'
             tableHeader={['Nombre', 'Contenido']}
             tableData={testimonials}
             requiredProperties={['name', 'content', 'createdAt']}

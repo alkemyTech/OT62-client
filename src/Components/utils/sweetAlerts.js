@@ -39,7 +39,11 @@ const postSweetAlert = async (values, route) => {
             title: 'Creado con exito',
             showConfirmButton: false,
             timer: 1500
-        }).then(() => window.location.replace(`/backoffice/${route}`))
+        }).then(() => {
+            if(route !== 'organization') {
+                window.location.replace(`/backoffice/${route}`)
+            }
+        })
     } catch (error) {
         Swal.fire({
             position: 'bottom-end',
@@ -60,7 +64,11 @@ const putSweetAlert = async (values, route) => {
             title: 'Editado con exito',
             showConfirmButton: false,
             timer: 1500
-        }).then(() => window.location.replace(`/backoffice/${route}`))
+        }).then(() => {
+            if(route !== 'organization') {
+                window.location.replace(`/backoffice/${route}`)
+            }
+        })
     } catch (error) {
         Swal.fire({
             position: 'bottom-end',
@@ -72,4 +80,14 @@ const putSweetAlert = async (values, route) => {
     }
 }
 
-export { deleteSweetAlert, postSweetAlert, putSweetAlert };
+const resultAlert = (text, state) => {
+    Swal.fire({
+        position: 'bottom-end',
+        icon: state,
+        title: text,
+        showConfirmButton: false,
+        timer: 1500
+    })
+}
+
+export { deleteSweetAlert, postSweetAlert, putSweetAlert, resultAlert };

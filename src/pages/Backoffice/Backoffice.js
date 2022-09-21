@@ -10,6 +10,7 @@ import CategoriesBackoffice from "./Categories/CategoriesBackoffice";
 import HomeBackoffice from "./Home/HomeBackoffice";
 import BackofficeLayout from "./Layout/BackofficeLayout";
 import Slides from "./Slides/Slides";
+import MembersBackoffice from './Members/MembersBackoffice';
 
 const Private = () => {
     return (
@@ -19,12 +20,13 @@ const Private = () => {
                 <Routes>
                     <Route path="/" element={<BackofficeLayout/>} />
                     <Route path="/testimonials/*" element={<TestimonialsBackoffice />} />
-                    <Route path="/contacts" element={<ContactsBackoffice />} />
+                    <Route path="/contacts/*" element={<ContactsBackoffice />} />
                     <Route path="/news/*" element={<NewsBackoffice />} />
                     <Route path="/activities/*" element={<ActivitiesBackoffice />} />
                     <Route path="/categories/*" element={<CategoriesBackoffice />} />
                     <Route path="/organization" element={<HomeBackoffice />} />
                     <Route path="/slides/*" element={<Slides />} />
+                    <Route path="/members/*" element={<MembersBackoffice />} /> 
                 </Routes>
             </div>
             <Footer />
