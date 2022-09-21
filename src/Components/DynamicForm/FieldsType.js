@@ -1,5 +1,6 @@
 import { Field, ErrorMessage, useFormikContext } from "formik";
 import valueTranslate from "../utils/valueTranslate";
+import imageToBase64 from "../../shared/imageToBase64";
 
 const TextField = ({ handleChange, value }) => {
     return (
@@ -44,14 +45,14 @@ const ImageField = ({ handleChange, value, values }) => {
     return (
         <>
             <div className="w-3/5 border border-solid rounded-lg border-gray-400 mb-6 mr-8 h-56 relative p-2">
-                <input className="w-full h-full z-10 absolute opacity-0 hover:cursor-pointer" type='file' name={value[0]} onChange={(e) => {
-                    const imagen = e.target.files[0]
-                    const img = document.getElementById('imgPreview')
+                <input className="w-full h-full z-10 absolute opacity-0 hover:cursor-pointer" type='file' name={value[0]} onChange={async (e) => {
+                    const image = e.target.files[0]
+                    const toBase64 = await imageToBase64(image)
                     const reader = new FileReader()
-                    reader.onload = function(e) {
+                    /* reader.onload = function(e) {
                         img.src = e.target.result
-                    }
-                    setFieldValue('image', reader.readAsDataURL(imagen))
+                    } */
+                    setFieldValue('image', toBase64)
                 }}/>
                 <div className='w-full h-full'>
                     <img id="imgPreview" src={values.image} alt={values.text} className='w-full h-full object-cover rounded-lg'/>
