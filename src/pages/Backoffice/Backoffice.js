@@ -11,6 +11,7 @@ import HomeBackoffice from "./Home/HomeBackoffice";
 import BackofficeLayout from "./Layout/BackofficeLayout";
 import Slides from "./Slides/Slides";
 import MembersBackoffice from './Members/MembersBackoffice';
+import UsersBackoffice from './Users/UsersBackoffice';
 
 const Private = () => {
     return (
@@ -27,6 +28,7 @@ const Private = () => {
                     <Route path="/organization" element={<HomeBackoffice />} />
                     <Route path="/slides/*" element={<Slides />} />
                     <Route path="/members/*" element={<MembersBackoffice />} /> 
+                    <Route path='/users/*' element={<UsersBackoffice />} />
                 </Routes>
             </div>
             <Footer />

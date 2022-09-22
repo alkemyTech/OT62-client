@@ -10,9 +10,9 @@ const deleteSweetAlert = (values, route) => {
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         confirmButtonText: 'Si, eliminar esto'
-      }).then((result) => {
+    }).then((result) => {
         if (result.isConfirmed) {
-            try { 
+            try {
                 APICalls.delete(`/${route}/${values.id}`)
                 Swal.fire(
                     'Eliminado!',
@@ -31,16 +31,28 @@ const deleteSweetAlert = (values, route) => {
 }
 
 const postSweetAlert = async (values, route) => {
+    
     try {
+        switch (values.image) {
+            case undefined:
+                values.image = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'
+                break;
+            default:
+                values.image = values.image
+                break;
+        }
         await APICalls.post(`/${route}`, values)
         Swal.fire({
             position: 'bottom-end',
             icon: 'success',
             title: 'Creado con exito',
             showConfirmButton: false,
-            timer: 1500
+            timer: 1500,
+            toast: true,
+            padding: '1.5em',
+            color: 'black'
         }).then(() => {
-            if(route !== 'organization') {
+            if (route !== 'organization' && route !== 'contacts' && route !== 'testimonials') {
                 window.location.replace(`/backoffice/${route}`)
             }
         })
@@ -50,7 +62,10 @@ const postSweetAlert = async (values, route) => {
             icon: 'error',
             title: 'Ha ocurrido un error',
             showConfirmButton: false,
-            timer: 1500
+            timer: 1500,
+            toast: true,
+            padding: '1.5rem',
+            color: 'black'
         })
     }
 }
@@ -63,9 +78,12 @@ const putSweetAlert = async (values, route) => {
             icon: 'success',
             title: 'Editado con exito',
             showConfirmButton: false,
-            timer: 1500
+            timer: 1500,
+            toast: true,
+            padding: '1.5em',
+            color: 'black'
         }).then(() => {
-            if(route !== 'organization') {
+            if (route !== 'organization') {
                 window.location.replace(`/backoffice/${route}`)
             }
         })
@@ -75,18 +93,45 @@ const putSweetAlert = async (values, route) => {
             icon: 'error',
             title: 'Ha ocurrido un error',
             showConfirmButton: false,
-            timer: 1500
+            timer: 1500,
+            toast: true,
+            padding: '1.5em',
+            color: 'black'
         })
     }
 }
 
 const resultAlert = (text, state) => {
+
+    if (state === 'error') {
+        switch (text) {
+            case 'User already exists':
+                text = 'Ya existe un usuario registrado con ese mail'
+                break;
+            case 'Invalid credentials':
+                text = 'Contraseña incorrecta'
+                break;
+            case "The user doesn't exist":
+                text = 'Correo no registrado'
+                break;
+            default:
+                text = 'Algo ha salido mal'
+                break;
+        }
+    }
+
     Swal.fire({
         position: 'bottom-end',
         icon: state,
+        // background: state === 'success' ? '#77dd77' : '#ff6961',
+        padding: '1.5rem',
+        backdrop: false,
+        toast: true,
         title: text,
         showConfirmButton: false,
-        timer: 1500
+        timer: 2500,
+        timerProgressBar: state === 'success' ? true : false,
+        color: 'black'
     })
 }
 

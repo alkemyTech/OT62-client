@@ -37,15 +37,34 @@ const valueTranslate = (value, place) => {
             label = 'Imagen:'
             type = 'file'
             break;
+        case 'firstName':
+            label = 'Primer nombre:'
+            type = 'text'
+            placeholder = 'Introduzca un nombre'
+            break;
+        case 'lastName':
+            label = 'Segundo nombre:'
+            type = 'text'
+            placeholder = 'Introduzca un nombre'
+            break;
+        case 'email':
+            label = 'Email:'
+            type = 'email'
+            placeholder = 'Introduzca su email'
+            break;
+        case 'roleId':
+            label = 'Rol:'
+            type = 'checkbox'
+            break;
         default:
             break
     }
 
-    if(place === 'label') {
+    if (place === 'label') {
         return label;
     } else if (place === 'type') {
         return type;
-    } else if(place === 'placeholder') {
+    } else if (place === 'placeholder') {
         return placeholder;
     }
 }

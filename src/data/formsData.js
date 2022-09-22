@@ -65,6 +65,12 @@ export const contactsData = [
     placeholder: "Email",
   },
   {
+    id: "phone",
+    name: "phone",
+    type: "number",
+    placeholder: "Celular"
+  },
+  {
     id: "message",
     name: "message",
     type: "text",
@@ -72,20 +78,11 @@ export const contactsData = [
   },
 ];
 
-export const testimonialsData = [
-  {
-    id: "name",
-    name: "name",
-    type: "text",
-    placeholder: "Nombre",
-  },
-  {
-    id: "content",
-    name: "content",
-    type: "text",
-    placeholder: "Contenido",
-  },
-];
+export const testimonialsData = {
+  name: '',
+  content: '',
+  image: ''
+}
 
 
 export const slidesFieldData = {
@@ -103,4 +100,12 @@ export const contactsFieldData = {
   phone: '',
   email: '',
   message: ''
+}
+
+export const usersFieldData = {
+  firstName: '',
+  lastName: '',
+  email: '',
+  image: '',
+  roleId: ''
 }

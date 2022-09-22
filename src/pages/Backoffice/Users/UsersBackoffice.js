@@ -3,28 +3,28 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 import BackofficeForm from "../../../Components/DynamicForm/BackofficeForm";
 import Table from "../../../Components/Table/Table";
 import APICalls from "../../../shared/APICalls";
-import { slidesFieldData } from '../../../data/formsData';
+import { usersFieldData } from '../../../data/formsData';
 
-const Slides = () => {
-    const [ slidesData, setSlides ] = useState({});
+const Users = () => {
+    const [ usersData, setUsers ] = useState({});
     const navigate = useNavigate();
 
     useEffect(() => {
-        const getSlides = async () => {
-            const res = await APICalls.get('/slides')
-            setSlides(res.data.slides)
+        const getUsers = async () => {
+            const res = await APICalls.get('/users')
+            setUsers(res.data.users)
         }
-        getSlides();
+        getUsers();
     }, [])
 
     const handleEdit = (data) => {
         navigate('edit', {
             state: {
-                fields: slidesFieldData,
+                fields: usersFieldData,
                 data,
                 method: 'PUT',
-                route: 'slides',
-                title: 'Editar slide'
+                route: 'users',
+                title: 'Editar usuario'
             }
         })
     }
@@ -34,10 +34,10 @@ const Slides = () => {
             <Route path="/" element={
                 <>
                     <Table 
-                        title='Slides' 
-                        tableHeader={['Imagen', 'Titulo']} 
-                        tableData={slidesData} 
-                        requiredProperties={['image', 'text' ,'createdAt']} 
+                        title='Usuarios' 
+                        tableHeader={['Nombre', 'Segundo Nombre', 'Email', 'Imagen', 'Rol']} 
+                        tableData={usersData} 
+                        requiredProperties={['firstName', 'lastName' ,'email', 'image', 'roleId', 'createdAt']} 
                         buttons={[
                             { type: 'Editar', handler: handleEdit}
                     ]}
@@ -49,4 +49,4 @@ const Slides = () => {
     )
 }
 
-export default Slides;
+export default Users;

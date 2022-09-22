@@ -2,20 +2,20 @@ import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Form, Formik } from "formik";
 import valueTranslate from "../utils/valueTranslate";
-import { ContentField, TextField, ImageField } from "./FieldsType";
+import { ContentField, TextField, ImageField, CheckboxField } from "./FieldsType";
 import { postSweetAlert, putSweetAlert } from "../utils/sweetAlerts";
 
-const BackofficeForm  = (props) => {
+const BackofficeForm = (props) => {
     const location = useLocation();
     const navigate = useNavigate();
-
-    if(location.state) {
-        var {fields, method, route, title, validation, path } = location.state;
+    
+    if (location.state) {
+        var { fields, method, route, title, validation, path } = location.state;
         if (location.state.data) {
             var data = location.state.data;
         }
-    } else if(props) {
-        var {fields, method, route, title, validation, path } = props;
+    } else if (props) {
+        var { fields, method, route, title, validation, path, hidden } = props;
         var data = fields;
     }
 
@@ -46,14 +46,14 @@ const BackofficeForm  = (props) => {
                             {Object.entries(fields).map((value, index) => {
                                 return (
                                     <>
-                                        <label key={index} className="font-semibold mb-1">{valueTranslate(value, 'label')}</label>
-                                        {generateInputs(value, handleChange, values)}
+                                        <label key={index} className={`${hidden ? 'hidden' : 'block'} font-semibold mb-1`}>{valueTranslate(value, 'label')}</label>
+                                        {generateInputs(value, handleChange, values, hidden)}
                                     </>
                                 )
                             })}
                             <div className="flex flex-wrap gap-2 mt-6">
-                                <button type='submit' className="self-center py-1.5 px-2 sm:py-1.5 sm:px-4 border bg-red-600 rounded-3xl text-white">Aceptar</button>
-                                <button type="button" className="py-1 px-2 sm:py-1.5 sm:px-4 self-center border-black border rounded-3xl" onClick={() => navigate(`${path ? path : `/backoffice/${route}`}`)}>Cancelar</button>
+                                <button type='submit' className="px-6 py-2 w-fit bg-red-600 text-white border rounded-lg hover:bg-red-700 self-center text-sm shadow-lg">Aceptar</button>
+                                <button type="button" className="px-6 py-2 w-fit text-black border rounded-lg self-center hover:bg-slate-300 text-sm shadow-lg border-slate-800" onClick={() => navigate(`${path ? path : `/backoffice/${route}`}`)}>Cancelar</button>
                             </div>
                         </Form>
                     </div>
@@ -63,36 +63,43 @@ const BackofficeForm  = (props) => {
     )
 };
 
-const generateInputs = (value, handleChange, values) => {
+const generateInputs = (value, handleChange, values, hidden) => {
     switch (value[0]) {
         case 'title':
+        case 'firstName':
+        case 'lastName':
+        case 'email':
             return (
-                <TextField value={value} handleChange={handleChange} key={value[0]}/>
+                <TextField value={value} handleChange={handleChange} key={value[0]} />
             )
         case 'name':
         case 'text':
             return (
-                <TextField value={value} handleChange={handleChange} key={value[0]}/>
+                <TextField value={value} handleChange={handleChange} key={value[0]} />
             )
         case 'content':
             return (
-                <ContentField value={value} handleChange={handleChange} key={value[0]}/>
-            )    
+                <ContentField value={value} handleChange={handleChange} key={value[0]} />
+            )
         case 'description':
             return (
-                <ContentField value={value} handleChange={handleChange} key={value[0]}/>
+                <ContentField value={value} handleChange={handleChange} key={value[0]} />
             )
         case 'category':
             return (
-                <TextField value={value} handleChange={handleChange} key={value[0]}/>
-            )    
+                <TextField value={value} handleChange={handleChange} key={value[0]} />
+            )
         case 'welcomeText':
             return (
-                <ContentField value={value} handleChange={handleChange} key={value[0]}/>
+                <ContentField value={value} handleChange={handleChange} key={value[0]} />
             )
         case 'image':
             return (
-                <ImageField value={value} key={value[0]} values={values}/>
+                <ImageField value={value} key={value[0]} values={values} hidden={hidden} />
+            )
+        case 'roleId':
+            return (
+                <CheckboxField value={value} key={value[0]} values={values} handleChange={handleChange} />
             )
         default:
             break;

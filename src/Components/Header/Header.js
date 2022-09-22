@@ -1,23 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import Logo from '../../images/Logo.png'
-import { Link } from "react-router-dom";
 import { useUserContext, useUserToggleContext } from '../../context/UserProvider';
 import { linksPublic, linksLoguedUser } from '../../data/headerData';
+import Button from '../Buttons/Buttons';
 
 const Header = () => {
   const [ links, setLinks ] = useState([]);
   const navigate = useNavigate();
-  const user = useUserContext()
-  const setUser = useUserToggleContext()
+  const user = useUserContext();
+  const setUser = useUserToggleContext();
 
   useEffect(() => {
     user ? setLinks(linksLoguedUser) : setLinks(linksPublic)
   }, [user])
 
-  if (JSON.stringify(links) === '[]') {
-    return <p>error</p>
-  } else {
+  const handleToggleUser = (setUser, user) => {
+    sessionStorage.removeItem('token');
+    setUser(null);
+  }
+
     return (
       <div className="bg-slate-100 px-5 py-4 shadow-md shadow-gray-400">
         <div className="h-full flex justify-between items-center">
@@ -34,29 +36,19 @@ const Header = () => {
             </ul>
             <div className="flex gap-2">
               {user?.roleId === 2 && (
-                    <button className="px-6 py-2 w-fit text-black border rounded-lg self-center border-black hover:bg-slate-300">
-                      <p className="text-sm"><Link to="/backoffice">Backoffice</Link></p>
-                    </button>
+                  <Button route='/backoffice' buttonName='Backoffice' styles='primaryButton' />
               )}
               {user?.roleId === 1 && (
-                    <button className="px-6 py-2 w-fit text-black border rounded-lg self-center border-black hover:bg-slate-300">
-                      <p className="text-sm"><Link to="/me">Perfil</Link></p>
-                    </button>
+                  <Button route='/me' buttonName='Perfil' styles='primaryButton' />
               )}
               {user ? (
                 <>
-                  <button className="px-6 py-2 w-fit bg-red-600 text-white border rounded-lg hover:bg-red-700 self-center">
-                    <p className="text-white text-sm"><Link to="/" onClick={() => setUser(null)}>Cerrar sesion</Link></p>
-                  </button>
+                  <Button route='/' buttonName='Cerrar sesion' styles='secondaryButton' handler={() => handleToggleUser(setUser, user)}/>
                 </>
               ) : (
                 <>
-                  <button className="px-6 py-2 w-fit text-black border rounded-lg self-center border-black hover:bg-slate-300">
-                    <p className="text-sm"><Link to="/login-user">Iniciar sesion</Link></p>
-                  </button>
-                  <button className="px-6 py-2 w-fit bg-red-600 text-white border rounded-lg hover:bg-red-700 self-center">
-                    <p className="text-white text-sm"><Link to="/register-user">Registro</Link></p>
-                  </button>
+                  <Button route='/login-user' buttonName='Inicia sesion' styles='primaryButton' />
+                  <Button route='/register-user' buttonName='Registrate' styles='secondaryButton' />
                 </>
               )
               }
@@ -64,8 +56,7 @@ const Header = () => {
           </div>
         </div>
       </div >
-      ) 
+    ) 
   }
-}
 
 export default Header;

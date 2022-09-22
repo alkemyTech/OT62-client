@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import NewsCard from '../../../Components/Cards/Card.js';
-import Loader from '../../../Components/Loader/Loader.js';
+import DataList from '../../../Components/DataList/DataList';
 import newsAPI from '.././../../shared/APICalls';
 
 const News = () => {
@@ -24,23 +23,9 @@ const News = () => {
     }, []);
 
     return (
-        <div className='min-h-full m-auto'>
-            <h1 className='font-bold text-4xl mb-[54px] mt-[54px] text-center'>Novedades</h1>
-            <div className='flex m-auto mb-[54px]'>
-                {loading ? (
-                    <Loader />
-                ) : (
-                    <ul className="flex flex-wrap gap-4 w-full justify-center">
-                        {news.length > 0 ? 
-                            news.map((element) => {
-                                return <NewsCard element={element} title={'new'}/>
-                            })
-                        :
-                            <p className='bg-yellow-200 p-1 pr-16 pl-16 font-semibold text-yellow-700 shadow-2xl'>No hay novedades</p>
-                        }
-                    </ul>
-                )}
-            </div>
+        <div className='min-h-full m-auto my-[56px] p-6'>
+            <h1 className='font-bold text-4xl mb-[54px] text-center'>Novedades</h1>
+            <DataList data={news} loading={loading} type='new' title='novedades'/>
         </div>
     );
 }

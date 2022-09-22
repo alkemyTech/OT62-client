@@ -6,8 +6,8 @@ const Loader = () => {
         <div className="m-auto">
             <ColorRing
                 visible={true}
-                height="80"
-                width="80"
+                height="70"
+                width="70"
                 ariaLabel="blocks-loading"
                 wrapperStyle={{}}
                 wrapperClass="blocks-wrapper"
