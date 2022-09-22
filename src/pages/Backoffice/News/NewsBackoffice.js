@@ -4,6 +4,7 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import BackofficeForm from "../../../Components/DynamicForm/BackofficeForm";
 import APICalls from "../../../shared/APICalls";
 import { deleteSweetAlert } from "../../../Components/utils/sweetAlerts";
+import * as Yup from 'yup';
 
 const NewsBackoffice = () => {
 
@@ -27,13 +28,25 @@ const NewsBackoffice = () => {
         category: ''
     }
 
+    /* const SUPPORTED_FORMATS = ['image/jpg', 'image/jpeg', 'image/gif', 'image/png']
+
+    const validation = Yup.object().shape({
+        file: Yup.mixed()
+          .test(
+            'fileFormat',
+            'Solo se aceptan formatos JPG, JPEG, GIF y PNG',
+            (value) => value === null || (value && SUPPORTED_FORMATS.includes(value.type))
+          )
+      }) */
+
     const handleCreate = () => {
         navigate('create', {
         state: {
             fields: newsData,
             method: 'POST',
             route: 'news',
-            title: 'Crear Novedad'
+            title: 'Crear Novedad',
+            /* validation */
         }
         })
     }
@@ -44,7 +57,8 @@ const NewsBackoffice = () => {
             data,
             method: 'PUT',
             route: 'news',
-            title: 'Editar Novedad'
+            title: 'Editar Novedad',
+            /* validation */
         }
         })
     }
@@ -57,9 +71,9 @@ const NewsBackoffice = () => {
                 <>
                     <Table 
                         title='Novedades' 
-                        tableHeader={['Nombre', 'Imagen']} 
+                        tableHeader={['Nombre', /*'Imagen',*/ 'Contenido']} 
                         tableData={news} 
-                        requiredProperties={['name', 'image', 'createdAt']} 
+                        requiredProperties={['name', /*'image',*/'content', 'createdAt']} 
                         buttons={[
                             { type: 'Editar', handler: handleEdit},
                             { type: 'Eliminar', handler: handleDelete }
