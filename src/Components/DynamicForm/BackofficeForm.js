@@ -43,7 +43,7 @@ const BackofficeForm  = (props) => {
                     <div className="flex justify-center h-full">
                         <Form onSubmit={handleSubmit} className="flex flex-col w-3/4 items-center p-6 border-[1px] shadow-lg m-7">
                             <h1 className="text-3xl mb-4 font-semibold">{title}</h1>
-                            {Object.entries(fields).map((value, index) => {
+                            {Object?.entries(fields)?.map((value, index) => {
                                 return (
                                     <>
                                         <label key={index} className="font-semibold mb-1">{valueTranslate(value, 'label')}</label>
@@ -70,6 +70,9 @@ const generateInputs = (value, handleChange, values) => {
                 <TextField value={value} handleChange={handleChange} key={value[0]}/>
             )
         case 'name':
+            return (
+                <TextField value={value} handleChange={handleChange} key={value[0]}/>
+            )
         case 'text':
             return (
                 <TextField value={value} handleChange={handleChange} key={value[0]}/>
