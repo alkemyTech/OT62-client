@@ -28,16 +28,6 @@ const NewsBackoffice = () => {
         category: ''
     }
 
-    /* const SUPPORTED_FORMATS = ['image/jpg', 'image/jpeg', 'image/gif', 'image/png']
-
-    const validation = Yup.object().shape({
-        file: Yup.mixed()
-          .test(
-            'fileFormat',
-            'Solo se aceptan formatos JPG, JPEG, GIF y PNG',
-            (value) => value === null || (value && SUPPORTED_FORMATS.includes(value.type))
-          )
-      }) */
 
     const handleCreate = () => {
         navigate('create', {
@@ -45,8 +35,7 @@ const NewsBackoffice = () => {
             fields: newsData,
             method: 'POST',
             route: 'news',
-            title: 'Crear Novedad',
-            /* validation */
+            title: 'Crear Novedad'
         }
         })
     }
@@ -57,8 +46,7 @@ const NewsBackoffice = () => {
             data,
             method: 'PUT',
             route: 'news',
-            title: 'Editar Novedad',
-            /* validation */
+            title: 'Editar Novedad'
         }
         })
     }
