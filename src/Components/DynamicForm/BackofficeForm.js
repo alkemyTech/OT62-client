@@ -18,7 +18,7 @@ const BackofficeForm = (props) => {
         var { fields, method, route, title, validation, path, hidden } = props;
         var data = fields;
     }
-
+    
     const onSubmit = async (values) => {
         switch (method) {
             case 'POST':
@@ -37,7 +37,7 @@ const BackofficeForm = (props) => {
             <Formik
                 initialValues={data ? data : fields}
                 onSubmit={onSubmit}
-                validationSchema={validation}
+                validationSchema={validation ? validation : props.validation}
             >
                 {({ handleChange, handleSubmit, values }) => (
                     <div className="flex justify-center h-full">
@@ -63,7 +63,7 @@ const BackofficeForm = (props) => {
     )
 };
 
-const generateInputs = (value, handleChange, values, hidden) => {
+export const generateInputs = (value, handleChange, values, hidden) => {
     switch (value[0]) {
         case 'title':
         case 'firstName':

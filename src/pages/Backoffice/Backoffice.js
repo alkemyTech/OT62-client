@@ -12,12 +12,14 @@ import BackofficeLayout from "./Layout/BackofficeLayout";
 import Slides from "./Slides/Slides";
 import MembersBackoffice from './Members/MembersBackoffice';
 import UsersBackoffice from './Users/UsersBackoffice';
+import BackofficeHeader from "../../Components/BackofficeHeader/BackofficeHeader";
 
 const Private = () => {
     return (
         <>
             <Header />
             <div className="flex flex-col flex-grow justify-center">
+                <BackofficeHeader />
                 <Routes>
                     <Route path="/" element={<BackofficeLayout/>} />
                     <Route path="/testimonials/*" element={<TestimonialsBackoffice />} />

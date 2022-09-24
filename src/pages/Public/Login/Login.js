@@ -5,12 +5,12 @@ import DynamicForm from "../../../Components/DynamicForm/DynamicForm";
 import { loginFieldData } from "../../../data/formsData";
 import APICalls from "../../../shared/APICalls";
 import { resultAlert } from '../../../Components/utils/sweetAlerts';
-import { useUserToggleContext } from '../../../context/UserProvider';
+import { useUserContext } from '../../../context/UserProvider';
 
 
 function Login() {
+  const { setUser } = useUserContext()
   const navigate = useNavigate();
-  const setUser = useUserToggleContext()
 
   return (
 

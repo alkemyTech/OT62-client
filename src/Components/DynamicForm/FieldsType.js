@@ -1,6 +1,7 @@
 import { Field, ErrorMessage, useFormikContext } from "formik";
 import valueTranslate from "../utils/valueTranslate";
 import imageToBase64 from "../../shared/imageToBase64";
+import { useState } from "react";
 
 
 const TextField = ({ handleChange, value }) => {
@@ -56,22 +57,33 @@ const ImageField = ({ handleChange, value, values, hidden }) => {
                     <img id="imgPreview" src={values.image} alt={values.text} className='w-full h-full object-cover rounded-lg' />
                 </div>
             </div>
+            <p className="text-red-400 font-semibold mb-6">
+                <ErrorMessage name={value[0]} />
+            </p>
         </>
     )
 }
 
 const CheckboxField = ({ handleChange, value, values }) => {
+    const roles = { Administador: 2, Standard: 1 }
+    console.log(values);
     return (
         <>
-            <div className="flex gap-6">
-                <div className="flex justify-center items-center gap-2">
-                    <input type='checkbox' id="standard"/>
-                    <label htmlFor="standard">Standard</label>
-                </div>
-                <div className="flex justify-center items-center gap-2">
-                    <input type='checkbox' id="admin"/>
-                    <label htmlFor="admin">Admin</label>
-                </div>
+            <div className="flex gap-4">
+                <select
+                    onChange={handleChange}
+                    name={value[0]}
+                    id={value[0]}
+                    className='border border-solid rounded-lg border-gray-400 mb-6 mr-8 p-2'
+                >
+                    {Object.entries(roles).map(([rolName, rolValue]) => {
+                        return (
+                            <option
+                                value={rolValue}
+                            >{rolName}</option>
+                        )
+                    })}
+                </select>
             </div>
         </>
     )

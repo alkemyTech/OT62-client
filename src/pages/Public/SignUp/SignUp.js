@@ -6,12 +6,12 @@ import DynamicForm from "../../../Components/DynamicForm/DynamicForm";
 import { useNavigate } from "react-router-dom";
 import APICalls from "../../../shared/APICalls";
 import { resultAlert } from '../../../Components/utils/sweetAlerts';
-import { useUserToggleContext } from '../../../context/UserProvider';
+import { useUserContext } from '../../../context/UserProvider';
 
 
 function SignUp() {
+  const { setUser } = useUserContext()
   const navigate = useNavigate();
-  const setUser = useUserToggleContext()
 
   return (
     <Formik

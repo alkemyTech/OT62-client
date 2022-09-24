@@ -33,7 +33,7 @@ const deleteSweetAlert = (values, route) => {
 const postSweetAlert = async (values, route) => {
     
     try {
-        switch (values.image) {
+        switch (values?.image) {
             case undefined:
                 values.image = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'
                 break;

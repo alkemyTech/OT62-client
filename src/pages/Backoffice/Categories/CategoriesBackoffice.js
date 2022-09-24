@@ -5,10 +5,16 @@ import BackofficeForm from "../../../Components/DynamicForm/BackofficeForm";
 import { categoriesFieldData } from '../../../data/formsData';
 import APICalls from "../../../shared/APICalls";
 import { deleteSweetAlert } from "../../../Components/utils/sweetAlerts";
+import * as Yup from "yup";
 
 const CategoriesBackOffice = () => {
     const [ categories, setCategories ] = useState([]);
     const navigate = useNavigate();
+    
+    const validation = Yup.object({
+        name: Yup.string().required("Obligatorio"),
+        description: Yup.string().required("Obligatorio")
+    })
 
     useEffect(() => {
         const getCategories = async () => {
@@ -59,11 +65,11 @@ const CategoriesBackOffice = () => {
                             { type: 'Eliminar', handler: handleDelete }
                     ]}
                     />
-                    <button className='px-2.5 py-1 w-fit bg-red-600 text-white border rounded-lg hover:bg-red-700 self-center mb-16' onClick={handleCreate}>Agregar Categoría</button>
+                    <button className='px-6 py-2 w-fit bg-red-600 text-white border rounded-lg hover:bg-red-700 self-center text-sm shadow-lg mb-16' onClick={handleCreate}>Agregar Categoría</button>
                 </>
             }/>
-            <Route path='/create' element={<BackofficeForm />} />
-            <Route path='/edit' element={<BackofficeForm />} />
+            <Route path='/create' element={<BackofficeForm validation={validation}/>} />
+            <Route path='/edit' element={<BackofficeForm validation={validation}/>} />
         </Routes>
     )
 }

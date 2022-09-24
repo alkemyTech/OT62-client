@@ -59,7 +59,7 @@ const MembersBackoffice = () => {
                             { type: 'Eliminar', handler: handleDelete }
                     ]}
                     />
-                    <button className='px-2.5 py-1 w-fit bg-red-600 text-white border rounded-lg hover:bg-red-700 self-center mb-16' onClick={handleCreate}>Agregar miembro</button>
+                    <button className='px-6 py-2 w-fit bg-red-600 text-white border rounded-lg hover:bg-red-700 self-center text-sm shadow-lg mb-16' onClick={handleCreate}>Agregar miembro</button>
                 </>
             }/>
             <Route path='/create' element={<BackofficeForm />} />

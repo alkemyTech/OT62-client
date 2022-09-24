@@ -67,7 +67,7 @@ const Home = () => {
 
           <Slider />
 
-          <LastDataLayout route='/members' title='Nuestro staff'>
+          <LastDataLayout route='/nosotros' title='Nuestro staff'>
             <DataList data={organization.members} loading={loading} type='member' title='miembros' />
           </LastDataLayout>
 

@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import Logo from '../../images/Logo.png'
-import { useUserContext, useUserToggleContext } from '../../context/UserProvider';
+import { useUserContext } from '../../context/UserProvider';
 import { linksPublic, linksLoguedUser } from '../../data/headerData';
 import Button from '../Buttons/Buttons';
 
 const Header = () => {
   const [ links, setLinks ] = useState([]);
+  const { user, setUser } = useUserContext();
   const navigate = useNavigate();
-  const user = useUserContext();
-  const setUser = useUserToggleContext();
 
   useEffect(() => {
     user ? setLinks(linksLoguedUser) : setLinks(linksPublic)

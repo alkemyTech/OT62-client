@@ -3,17 +3,17 @@ import { Outlet, useNavigate } from 'react-router-dom';
 import { useUserContext } from '../../context/UserProvider';
 
 const PrivateRoute = ({ allowedRoles }) => {
+    const { user, loaded } = useUserContext();
     const navigate = useNavigate();
-    const user = useUserContext();
-    
+
     useEffect(() => {
-        if (!user) {
+        if (!user && loaded) {
             navigate('/login-user');
         }
-        if (user && !allowedRoles.includes(user.roleId)) {
+        if (user && !allowedRoles.includes(user.roleId) && loaded) {
             navigate('/');
         }
-    }, [user, navigate, allowedRoles]);
+    }, [user, navigate, allowedRoles, loaded]);
 
     return user && allowedRoles?.includes(user.roleId) ? <Outlet /> : '';
 };
