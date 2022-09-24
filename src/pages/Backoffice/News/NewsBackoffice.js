@@ -4,11 +4,7 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import BackofficeForm from "../../../Components/DynamicForm/BackofficeForm";
 import APICalls from "../../../shared/APICalls";
 import { deleteSweetAlert } from "../../../Components/utils/sweetAlerts";
-<<<<<<< HEAD
 import * as Yup from "yup";
-=======
-import * as Yup from 'yup';
->>>>>>> dev
 
 const NewsBackoffice = () => {
 
