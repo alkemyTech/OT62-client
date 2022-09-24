@@ -90,4 +90,14 @@ const resultAlert = (text, state) => {
     })
 }
 
-export { deleteSweetAlert, postSweetAlert, putSweetAlert, resultAlert };
+const fileTypeAlert = () => {
+    Swal.fire({
+        position: 'bottom-end',
+        icon: 'error',
+        title: 'El formato de archivo debe ser JPG, JPEG o PNG',
+        showConfirmButton: false,
+        timer: 1500
+    })
+}
+
+export { deleteSweetAlert, postSweetAlert, putSweetAlert, resultAlert, fileTypeAlert };

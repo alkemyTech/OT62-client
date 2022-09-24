@@ -3,7 +3,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Form, Formik } from "formik";
 import valueTranslate from "../utils/valueTranslate";
 import { ContentField, TextField, ImageField } from "./FieldsType";
-import { postSweetAlert, putSweetAlert } from "../utils/sweetAlerts";
+import { fileTypeAlert, postSweetAlert, putSweetAlert } from "../utils/sweetAlerts";
+import Swal from 'sweetalert2';
 
 const BackofficeForm  = (props) => {
     const location = useLocation();
@@ -24,14 +25,14 @@ const BackofficeForm  = (props) => {
         switch (method) {
             case 'POST':
                 if(!values.image){
-                    alert('El formato de archivo debe ser JPG, JPEG o PNG');
+                    fileTypeAlert()
                     return
                 }
                 postSweetAlert(values, route)
                 break;
-            case 'PUT':
+                case 'PUT':
                 if(!values.image){
-                    alert('El formato de archivo debe ser JPG, JPEG o PNG');
+                    fileTypeAlert()
                     return
                 }
                 putSweetAlert(values, route)
@@ -45,7 +46,6 @@ const BackofficeForm  = (props) => {
         <>
             <Formik
                 initialValues={data ? data : fields}
-                /* onSubmit={onSubmit} */
                 validationSchema={validation}
             >
                 {({ handleChange, handleSubmit, values, errors}) => (
