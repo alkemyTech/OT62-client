@@ -3,7 +3,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Form, Formik } from "formik";
 import valueTranslate from "../utils/valueTranslate";
 import { ContentField, TextField, ImageField } from "./FieldsType";
-import { postSweetAlert, putSweetAlert } from "../utils/sweetAlerts";
+import { fileTypeAlert, postSweetAlert, putSweetAlert } from "../utils/sweetAlerts";
+import Swal from 'sweetalert2';
 
 const BackofficeForm  = (props) => {
     const location = useLocation();
@@ -19,12 +20,21 @@ const BackofficeForm  = (props) => {
         var data = fields;
     }
 
-    const onSubmit = async (values) => {
+    const onSubmit = async (values, errors, e) => {
+        e.preventDefault();
         switch (method) {
             case 'POST':
+                if(!values.image){
+                    fileTypeAlert()
+                    return
+                }
                 postSweetAlert(values, route)
                 break;
-            case 'PUT':
+                case 'PUT':
+                if(!values.image){
+                    fileTypeAlert()
+                    return
+                }
                 putSweetAlert(values, route)
                 break;
             default:
@@ -36,12 +46,11 @@ const BackofficeForm  = (props) => {
         <>
             <Formik
                 initialValues={data ? data : fields}
-                onSubmit={onSubmit}
                 validationSchema={validation}
             >
-                {({ handleChange, handleSubmit, values }) => (
+                {({ handleChange, handleSubmit, values, errors}) => (
                     <div className="flex justify-center h-full">
-                        <Form onSubmit={handleSubmit} className="flex flex-col w-3/4 items-center p-6 border-[1px] shadow-lg m-7">
+                        <Form onSubmit={(e) => handleSubmit(onSubmit(values, errors, e))} className="flex flex-col w-3/4 items-center p-6 border-[1px] shadow-lg m-7">
                             <h1 className="text-3xl mb-4 font-semibold">{title}</h1>
                             {Object?.entries(fields)?.map((value, index) => {
                                 return (
