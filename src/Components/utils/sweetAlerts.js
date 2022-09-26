@@ -30,15 +30,15 @@ const deleteSweetAlert = (values, route) => {
     })
 }
 
-const postSweetAlert = async (values, route) => {
-    
+const postSweetAlert = async (values, route, prevRoute) => {
+    const prevImage = values.image
     try {
         switch (values?.image) {
             case undefined:
                 values.image = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'
                 break;
             default:
-                values.image = values.image
+                values.image = prevImage
                 break;
         }
         await APICalls.post(`/${route}`, values)
@@ -53,6 +53,8 @@ const postSweetAlert = async (values, route) => {
             color: 'black'
         }).then(() => {
             if (route !== 'organization' && route !== 'contacts' && route !== 'testimonials') {
+                window.location.replace(`/backoffice/${route}`)
+            } else if(prevRoute === 'backoffice') {
                 window.location.replace(`/backoffice/${route}`)
             }
         })
@@ -135,4 +137,14 @@ const resultAlert = (text, state) => {
     })
 }
 
-export { deleteSweetAlert, postSweetAlert, putSweetAlert, resultAlert };
+const fileTypeAlert = () => {
+    Swal.fire({
+        position: 'bottom-end',
+        icon: 'error',
+        title: 'El formato de archivo debe ser JPG, JPEG o PNG',
+        showConfirmButton: false,
+        timer: 1500
+    })
+}
+
+export { deleteSweetAlert, postSweetAlert, putSweetAlert, resultAlert, fileTypeAlert };

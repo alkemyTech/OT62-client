@@ -7,19 +7,19 @@ import { slidesFieldData } from '../../../data/formsData';
 import * as Yup from "yup";
 
 const Slides = () => {
-    const [ slidesData, setSlides ] = useState({});
+    const [slidesData, setSlides] = useState({});
     const navigate = useNavigate();
 
     const SUPPORTED_FORMATS = 'data:image'
 
     const validation = Yup.object({
         text: Yup.string().required("Obligatorio"),
-        image: Yup.mixed()
-    .test(
-        'fileFormat',
-        'Solo se aceptan formatos JPG, JPEG, GIF y PNG',
-        (value) =>  (value && SUPPORTED_FORMATS.includes(value.slice(0,10)))
-    )
+        image: Yup.mixed().required("Obligatorio")
+            .test(
+                'fileFormat',
+                'Solo se aceptan formatos JPG, JPEG, GIF y PNG',
+                (value) => (value || SUPPORTED_FORMATS.includes(value?.slice(0, 10)))
+            )
     })
 
     useEffect(() => {
@@ -46,18 +46,18 @@ const Slides = () => {
         <Routes>
             <Route path="/" element={
                 <>
-                    <Table 
-                        title='Slides' 
-                        tableHeader={[/*'Imagen',*/ 'Titulo']} 
-                        tableData={slidesData} 
-                        requiredProperties={[/*'image',*/ 'text' ,'createdAt']} 
+                    <Table
+                        title='Slides'
+                        tableHeader={[/*'Imagen',*/ 'Titulo']}
+                        tableData={slidesData}
+                        requiredProperties={[/*'image',*/ 'text', 'createdAt']}
                         buttons={[
-                            { type: 'Editar', handler: handleEdit}
-                    ]}
+                            { type: 'Editar', handler: handleEdit }
+                        ]}
                     />
                 </>
-            }/>
-            <Route path='/edit' element={<BackofficeForm validation={validation}/>} />
+            } />
+            <Route path='/edit' element={<BackofficeForm validation={validation} />} />
         </Routes>
     )
 }

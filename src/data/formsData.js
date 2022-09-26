@@ -92,7 +92,8 @@ export const slidesFieldData = {
 
 export const membersFieldData ={
   name: '',
-  rol: ''
+  rol: '',
+  image: ''
 }
 
 export const contactsFieldData = {

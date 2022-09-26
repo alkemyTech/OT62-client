@@ -30,12 +30,16 @@ const headerGenerate = (tableHeader, title) => {
                 return <th key={head} className='border-collapse border border-slate-500 p-3 text-center'>{head}</th>
             })}
             <th className='border-collapse border border-slate-500 p-3 text-center'>Fecha</th>
-            <th className='border-collapse border border-slate-500 p-3 text-center'>Acciones</th>
+            { title !== 'Contactos' ? (
+                <th className='border-collapse border border-slate-500 p-3 text-center'>Acciones</th>
+            ) : (
+                null
+            )}
         </>
     )
 }
 
-const bodyGenerate = (tableData, requiredProperties, buttons) => {
+const bodyGenerate = (tableData, requiredProperties, buttons, title) => {
     return (
         <>
             {tableData.map(row => {
@@ -56,13 +60,17 @@ const bodyGenerate = (tableData, requiredProperties, buttons) => {
                                 )
                             }
                         })}
-                        <td className='border-collapse border border-slate-500 p-3'>
-                        {buttons.map(({ type, handler }) => (
-                            <button className={`${type === 'Editar' ? 'bg-blue-500 hover:bg-blue-400' : 'bg-red-500 hover:bg-red-400'} w-full m-1 font-semibold text-white`} key={type} onClick={() => handler(row)}>
-                                {type}
-                            </button>
-                        ))}
-                        </td>
+                        { title !== 'Contactos' ? (
+                            <td className='border-collapse border border-slate-500 p-3'>
+                            {buttons.map(({ type, handler }) => (
+                                <button className={`${type === 'Editar' ? 'bg-blue-500 hover:bg-blue-400' : 'bg-red-500 hover:bg-red-400'} w-full m-1 font-semibold text-white`} key={type} onClick={() => handler(row)}>
+                                    {type}
+                                </button>
+                            ))}
+                            </td>
+                        ) : (
+                            null
+                        )}
                     </tr>
                 )
             })}

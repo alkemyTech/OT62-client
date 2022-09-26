@@ -33,7 +33,8 @@ const Home = () => {
     const getNews = async () => {
       try {
         const res = await ApiCall.get('/news');
-        const recortedNews = res.data.allNews.slice(0, 2)
+        const lastData = res.data.allNews.reverse()
+        const recortedNews = lastData.slice(0, 2)
         setNews(recortedNews)
       } catch (error) {
         setNews([])
@@ -47,7 +48,7 @@ const Home = () => {
     getNews();
   }, []);
 
-
+  
   return (
     <div className="flex flex-col items-center w-screen">
       {JSON.stringify(organization) !== '{}' ? (
@@ -66,7 +67,6 @@ const Home = () => {
           </div>
 
           <Slider />
-
           <LastDataLayout route='/nosotros' title='Nuestro staff'>
             <DataList data={organization.members} loading={loading} type='member' title='miembros' />
           </LastDataLayout>

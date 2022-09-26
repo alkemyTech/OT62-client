@@ -40,6 +40,9 @@ const Header = () => {
               {user?.roleId === 1 && (
                   <Button route='/me' buttonName='Perfil' styles='primaryButton' />
               )}
+              {user?.roleId === 2 && (
+                  <Button route='/me' buttonName='Perfil' styles='primaryButton' />
+              )}
               {user ? (
                 <>
                   <Button route='/' buttonName='Cerrar sesion' styles='secondaryButton' handler={() => handleToggleUser(setUser, user)}/>

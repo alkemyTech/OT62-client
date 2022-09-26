@@ -56,6 +56,25 @@ const valueTranslate = (value, place) => {
             label = 'Rol:'
             type = 'checkbox'
             break;
+        case 'rol':
+            label = 'Rol:'
+            type= 'text'
+            break;
+        case 'description':
+            label = 'Descripcion:'
+            type= 'text'
+            placeholder = 'Introduzca una descripcion'
+            break;
+        case 'phone':
+            label = 'Celular:'
+            type = 'number'
+            placeholder = 'Introduzca un numero de celular'
+            break;
+            case 'message':
+                label = 'Mensaje:'
+                type = 'text'
+                placeholder = 'Introduzca su mensage'
+                break;
         default:
             break
     }

@@ -8,8 +8,8 @@ const DataList = ({ data, loading, type, title }) => {
         <div className="flex flex-wrap gap-6 justify-center min-h-[100px]">
             { !loading ? (
               data.length ? (
-                data.map((element) => (
-                  <div className="flex flex-row relative justify-center first:gap-0 min" key={element.id}>
+                data.map((element, index) => (
+                  <div key={index} className="flex flex-row relative justify-center first:gap-0 min" key={element.id}>
                     <Card element={element} title={type} />
                   </div>
                 ))) : (

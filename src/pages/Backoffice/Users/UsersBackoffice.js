@@ -5,9 +5,10 @@ import Table from "../../../Components/Table/Table";
 import APICalls from "../../../shared/APICalls";
 import { usersFieldData } from '../../../data/formsData';
 import * as Yup from "yup";
+import { deleteSweetAlert } from "../../../Components/utils/sweetAlerts";
 
 const Users = () => {
-    const [ usersData, setUsers ] = useState({});
+    const [ usersData, setUsers ] = useState([]);
     const navigate = useNavigate();
 
     const SUPPORTED_FORMATS = 'data:image'
@@ -16,12 +17,12 @@ const Users = () => {
         firstName: Yup.string().required("Obligatorio"),
         lastName: Yup.string().required("Obligatorio"),
         email: Yup.string().required("Obligatorio"),
-        image: Yup.mixed()
-    .test(
-        'fileFormat',
-        'Solo se aceptan formatos JPG, JPEG, GIF y PNG',
-        (value) =>  (value && SUPPORTED_FORMATS.includes(value.slice(0,10)))
-    )
+        image: Yup.mixed().required("Obligatorio")
+            .test(
+                'fileFormat',
+                'Solo se aceptan formatos JPG, JPEG, GIF y PNG',
+                (value) => (value || SUPPORTED_FORMATS.includes(value?.slice(0, 10)))
+            )
     })
 
     useEffect(() => {
@@ -44,6 +45,10 @@ const Users = () => {
         })
     }
 
+    const handleDelete = async (values) => {
+        deleteSweetAlert(values, 'users')
+    }
+
     return (
         <Routes>
             <Route path="/" element={
@@ -54,7 +59,8 @@ const Users = () => {
                         tableData={usersData} 
                         requiredProperties={['firstName', 'lastName' ,'email', /*'image',*/ 'roleId', 'createdAt']} 
                         buttons={[
-                            { type: 'Editar', handler: handleEdit}
+                            { type: 'Editar', handler: handleEdit},
+                            { type: 'Eliminar', handler: handleDelete}
                     ]}
                     />
                 </>

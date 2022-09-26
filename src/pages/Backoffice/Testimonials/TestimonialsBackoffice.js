@@ -15,13 +15,13 @@ const TestimonialsBackoffice = () => {
   const validation = Yup.object({
     name: Yup.string().required("Obligatorio"),
     content: Yup.string().required("Obligatorio"),
-    image: Yup.mixed()
-    .test(
+    image: Yup.mixed().required("Obligatorio")
+      .test(
         'fileFormat',
         'Solo se aceptan formatos JPG, JPEG, GIF y PNG',
-        (value) =>  (value && SUPPORTED_FORMATS.includes(value.slice(0,10)))
-    )
-})
+        (value) => (value || SUPPORTED_FORMATS.includes(value?.slice(0, 10)))
+      )
+  })
 
   useEffect(() => {
     const getTestimonials = async () => {
@@ -38,19 +38,23 @@ const TestimonialsBackoffice = () => {
     content: '',
     image: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'
   }
+
   const handleCreate = () => {
     navigate('create', {
       state: {
         fields: testimonialsData,
         method: 'POST',
         route: 'testimonials',
-        title: 'Crear Testimonial'
+        title: 'Crear Testimonial',
+        prevRoute: 'backoffice'
       }
     })
   }
+
   const handleDelete = async (values) => {
     deleteSweetAlert(values, 'testimonials')
   }
+
   const handleEdit = (data) => {
     navigate('edit', {
       state: {
@@ -58,7 +62,8 @@ const TestimonialsBackoffice = () => {
         data,
         method: 'PUT',
         route: 'testimonials',
-        title: 'Editar Testimonial'
+        title: 'Editar Testimonial',
+        prevRoute: 'backoffice'
       }
     })
   }
@@ -80,8 +85,8 @@ const TestimonialsBackoffice = () => {
           <button className='px-6 py-2 w-fit bg-red-600 text-white border rounded-lg hover:bg-red-700 self-center text-sm shadow-lg mb-16' onClick={handleCreate}>Agregar testimonio</button>
         </>
       } />
-      <Route path='/create' element={<BackofficeForm validation={validation}/>} />
-      <Route path='/edit' element={<BackofficeForm validation={validation}/>} />
+      <Route path='/create' element={<BackofficeForm validation={validation} />} />
+      <Route path='/edit' element={<BackofficeForm validation={validation} />} />
     </Routes>
   )
 }

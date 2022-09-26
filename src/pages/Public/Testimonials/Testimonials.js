@@ -7,8 +7,7 @@ import Button from '../../../Components/Buttons/Buttons';
 const Testimonials = () => {
     const [testimonials, setTestimonials] = useState([]);
     const [loading, setLoading] = useState(true);
-    const user = useUserContext();
-
+    const {user} = useUserContext();
     useEffect(() => {
         const getTestimonials = async () => {
             try {

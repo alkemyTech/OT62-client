@@ -4,7 +4,7 @@ import { useUserContext } from "../../../context/UserProvider";
 import * as Yup from "yup";
 
 const CreateTestimonial = () => {
-  const user = useUserContext();
+  const {user} = useUserContext();
 
   const validation = Yup.object({
     name: Yup.string().required("Campo obligatorio"),

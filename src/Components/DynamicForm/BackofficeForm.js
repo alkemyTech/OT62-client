@@ -10,7 +10,7 @@ const BackofficeForm = (props) => {
     const navigate = useNavigate();
     
     if (location.state) {
-        var { fields, method, route, title, validation, path } = location.state;
+        var { fields, method, route, title, validation, path, prevRoute } = location.state;
         if (location.state.data) {
             var data = location.state.data;
         }
@@ -22,10 +22,10 @@ const BackofficeForm = (props) => {
     const onSubmit = async (values) => {
         switch (method) {
             case 'POST':
-                postSweetAlert(values, route)
+                postSweetAlert(values, route, prevRoute)
                 break;
-            case 'PUT':
-                putSweetAlert(values, route)
+                case 'PUT':
+                putSweetAlert(values, route, prevRoute)
                 break;
             default:
                 break;
@@ -39,7 +39,7 @@ const BackofficeForm = (props) => {
                 onSubmit={onSubmit}
                 validationSchema={validation ? validation : props.validation}
             >
-                {({ handleChange, handleSubmit, values }) => (
+                {({ handleChange, handleSubmit, values, errors}) => (
                     <div className="flex justify-center h-full">
                         <Form onSubmit={handleSubmit} className="flex flex-col w-3/4 items-center p-6 border-[1px] shadow-lg m-7">
                             <h1 className="text-3xl mb-4 font-semibold">{title}</h1>
@@ -69,8 +69,10 @@ export const generateInputs = (value, handleChange, values, hidden) => {
         case 'firstName':
         case 'lastName':
         case 'email':
+        case 'rol':
+        case 'phone':
             return (
-                <TextField value={value} handleChange={handleChange} key={value[0]} />
+                <TextField value={value} handleChange={handleChange} key={value[0]}/>
             )
         case 'name':
             return (
@@ -81,6 +83,7 @@ export const generateInputs = (value, handleChange, values, hidden) => {
                 <TextField value={value} handleChange={handleChange} key={value[0]} />
             )
         case 'content':
+        case 'message':
             return (
                 <ContentField value={value} handleChange={handleChange} key={value[0]} />
             )
