@@ -36,7 +36,7 @@ const Home = () => {
                 <h1 className="text-2xl sm:text-3xl font-bold text-center md:text-start mb-6">
                   Hola! Bienvenidx
                 </h1>
-                <p className="w-6/7 mr-auto ml-auto md:ml-0">{organization.organization.welcomeText}</p>
+                <p className="w-6/7 mr-auto ml-auto md:ml-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus animi repudiandae dolore doloremque repellendus laudantium sunt fugit cumque, nihil quasi in non nisi quam quo, vel amet consectetur possimus rem doloribus. Reiciendis suscipit harum iusto mollitia repellendus ut, illo delectus.</p>
               </div>
               <button onClick={() => navigate('/contacts')} className="mx-auto md:mx-0 self-start py-2 px-5 rounded-xl font-semibold text-white bg-red-600">
                 Contactanos
