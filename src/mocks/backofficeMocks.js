@@ -39,6 +39,11 @@ const BackofficeMocks = [
         image: "https://cdn-icons-png.flaticon.com/512/2352/2352167.png",
         route: 'members'
     },
+    {
+        name: "Contactos",
+        image: "https://cdn-icons-png.flaticon.com/512/3095/3095583.png",
+        route: 'contacts'
+    }
 ]
 
 export default BackofficeMocks;

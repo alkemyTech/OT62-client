@@ -86,3 +86,21 @@ export const testimonialsData = [
     placeholder: "Contenido",
   },
 ];
+
+
+export const slidesFieldData = {
+  text: '',
+  image: ''
+}
+
+export const membersFieldData ={
+  name: '',
+  rol: ''
+}
+
+export const contactsFieldData = {
+  name: '',
+  phone: '',
+  email: '',
+  message: ''
+}

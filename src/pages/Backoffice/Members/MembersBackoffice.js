@@ -1,46 +1,46 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Table from '../../../Components/Table/Table';
+import MembersAPI from '../../../shared/APICalls';
 import BackofficeForm from "../../../Components/DynamicForm/BackofficeForm";
-import { categoriesFieldData } from '../../../data/formsData';
-import APICalls from "../../../shared/APICalls";
-import { deleteSweetAlert } from "../../../Components/utils/sweetAlerts";
+import { membersFieldData } from '../../../data/formsData';
+import { deleteSweetAlert } from '../../../Components/utils/sweetAlerts';
 
-const CategoriesBackOffice = () => {
-    const [ categories, setCategories ] = useState([]);
+const MembersBackoffice = () => {
+    const [ Members, setMembers ] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
-        const getCategories = async () => {
-            const res = await APICalls.get('/categories')
-            setCategories(res.data.data)
+        const getMembers = async () => {
+            const res = await MembersAPI.get('/members')
+            setMembers(res.data.data)
         }
-        getCategories();
+        getMembers();
     }, []);
 
     const handleEdit = (data) => {
         navigate('edit', {
             state: {
-                fields: categoriesFieldData,
+                fields: membersFieldData,
                 data,
                 method: 'PUT',
-                route: 'categories',
-                title: 'Editar categoría'
+                route: 'members',
+                title: 'Editar miembro'
             }
         })
     }
     
     const handleDelete = async (values) => {
-        deleteSweetAlert(values, 'categories')
+        deleteSweetAlert(values, 'members')
     }
     
     const handleCreate = () => {
         navigate('create', {
             state: {
-                fields: categoriesFieldData,
+                fields: membersFieldData,
                 method: 'POST',
-                route: 'categories',
-                title: 'Crear categoría'
+                route: 'members',
+                title: 'Crear miembro'
             }
         })
     }
@@ -50,16 +50,16 @@ const CategoriesBackOffice = () => {
             <Route path="/" element={
                 <>
                     <Table 
-                        title='Categorías' 
-                        tableHeader={['Nombre', "Decripción"]} 
-                        tableData={categories} 
-                        requiredProperties={['name', 'description' ,'createdAt']} 
+                        title='Miembros' 
+                        tableHeader={['Nombre', 'Rol']} 
+                        tableData={Members} 
+                        requiredProperties={['name', 'rol' ,'createdAt']} 
                         buttons={[
                             { type: 'Editar', handler: handleEdit},
                             { type: 'Eliminar', handler: handleDelete }
                     ]}
                     />
-                    <button className='px-2.5 py-1 w-fit bg-red-600 text-white border rounded-lg hover:bg-red-700 self-center mb-16' onClick={handleCreate}>Agregar Categoría</button>
+                    <button className='px-2.5 py-1 w-fit bg-red-600 text-white border rounded-lg hover:bg-red-700 self-center mb-16' onClick={handleCreate}>Agregar miembro</button>
                 </>
             }/>
             <Route path='/create' element={<BackofficeForm />} />
@@ -68,4 +68,4 @@ const CategoriesBackOffice = () => {
     )
 }
 
-export default CategoriesBackOffice;
+export default MembersBackoffice;
