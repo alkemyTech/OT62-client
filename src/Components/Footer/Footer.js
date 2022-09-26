@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Logo from '../../images/Logo.png'
 import Facebook from '../../images/facebook.png'
 import Instagram from '../../images/instagram.png'
@@ -32,25 +32,22 @@ const Footer = () => {
       id: '5',
       title: 'Contacto',
       route: '/contacts'
-    },
-    {
-      id: '6',
-      title: 'Contribuye',
-      route: '/contribuye'
     }
   ]
-  if(pathname === "/login-user" || pathname === "/register-user")return null
+  if (pathname === "/login-user" || pathname === "/register-user") return null
   return (
     <div className='bg-neutral-400 pt-12 pr-4 pb-16 pl-4'>
       <div className="flex flex-col items-center gap-8">
         <div className="image-container">
-          <img className="w-24 h-13" src={Logo} alt='Logo' />
+          <Link to='/'>
+            <img className="w-24 h-13" src={Logo} alt='Logo' />
+          </Link>
         </div>
         <ul className="flex flex-col gap-4 md:flex md:flex-row md:gap-12 text-center">
           {links.map((link) => (
-            <li key={link.id}>
+            <Link to={link.route} key={link.id}>
               {link.title}
-            </li>
+            </Link>
           ))}
         </ul>
         <div className='flex flex-col gap-2.5 mt-7 py-0 px-2.5'>
