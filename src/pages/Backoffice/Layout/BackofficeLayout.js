@@ -6,8 +6,8 @@ const BackofficeLayout = () => {
 
     return (
         <div className="flex flex-wrap gap-4 justify-center w-1/2 self-center my-8">
-            {BackofficeMocks.map((card) => (
-                <BackofficeCards element={card} title='backoffice' />
+            {BackofficeMocks.map((card, index) => (
+                <BackofficeCards element={card} title='backoffice' size='48' index={index}/>
             ))}
         </div>
     )

@@ -1,24 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
 import { Formik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import DynamicForm from "../../../Components/DynamicForm/DynamicForm";
 import { loginFieldData } from "../../../data/formsData";
 import APICalls from "../../../shared/APICalls";
 import { resultAlert } from '../../../Components/utils/sweetAlerts';
-import { useUserToggleContext } from '../../../context/UserProvider';
+import { useUserContext } from '../../../context/UserProvider';
 
 
 function Login() {
+  const { setUser } = useUserContext()
   const navigate = useNavigate();
-  const [errorMessage, setErrorMessage] = useState();
-  const setUser = useUserToggleContext()
 
   return (
 
     <Formik
-        initialValues ={{
-          email: '',
-          password: ''
+      initialValues={{
+        email: '',
+        password: ''
       }}
       onSubmit={async (values) => {
         try {
@@ -27,43 +26,42 @@ function Login() {
             "token",
             response.data.token
           );
-          resultAlert('Logueado con exito, redireccionando a inicio...', 'success')
           setUser(response.data.user)
-          setTimeout(function(){
+          resultAlert('Logueado con exito. Redireccionando a inicio...', 'success')
+          setTimeout(function () {
             navigate("/");
-          }, 2000);
+          }, 2500);
         } catch (error) {
           if (error) {
-            resultAlert('Algo ha salido mal', 'error')
+            const err = error.response.data.message;
+            resultAlert(err, 'error')
           }
         }
       }}
     >
 
-        <div className="flex flex-col h-full w-full my-8 md:my-0">
-          <div className="w-full text-center justify-center h-full md:grid md:grid-cols-2">
-            <div className="flex flex-col justify-center items-center w-3/4 m-auto">
-              <div className="mb-8">
-                <h6>Bienvenido</h6>
-                <h3 className="text-3xl">Inicia sesión en tu cuenta!</h3>
-              </div>
-              <DynamicForm buttonName="Inicia sesion" data={loginFieldData} />
-              <div className="mt-12">
-                <p className="text-xl">
-                  No tienes una cuenta? <Link to="/register-user" className="text-xl text-red-500">Registrate</Link>
-                </p>
-              </div>
+      <div className="flex flex-col min-h-full w-full my-8 md:my-0">
+        <div className="w-full text-center justify-center h-full md:grid md:grid-cols-2">
+          <div className="flex flex-col justify-center items-center w-3/4 m-auto h-full">
+            <div className="mb-8">
+              <h6>Bienvenido</h6>
+              <h3 className="text-3xl">Inicia sesión en tu cuenta!</h3>
             </div>
-            
-            <img
-              className="hidden h-full w-full md:flex"
-              src="https://media.istockphoto.com/photos/united-through-their-diversity-picture-id614211848?k=20&m=614211848&s=612x612&w=0&h=XJA_xolV3AOcgiOvYEHX2dlRqCFhMNaceRh7oB6A5Hg="
-              alt="login-img"
-            />
-
+            <DynamicForm buttonName="Inicia sesion" data={loginFieldData} />
+            <div className="mt-12">
+              <p className="text-xl">No tienes una cuenta? <Link to="/register-user" className="text-xl text-red-500">Registrate</Link></p>
+            </div>
           </div>
+
+          <img
+            className="hidden h-full w-full md:flex"
+            src="https://media.istockphoto.com/photos/united-through-their-diversity-picture-id614211848?k=20&m=614211848&s=612x612&w=0&h=XJA_xolV3AOcgiOvYEHX2dlRqCFhMNaceRh7oB6A5Hg="
+            alt="login-img"
+          />
+
         </div>
-      </Formik>
+      </div>
+    </Formik>
   );
 }
 

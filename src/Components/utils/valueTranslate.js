@@ -37,15 +37,53 @@ const valueTranslate = (value, place) => {
             label = 'Imagen:'
             type = 'file'
             break;
+        case 'firstName':
+            label = 'Primer nombre:'
+            type = 'text'
+            placeholder = 'Introduzca un nombre'
+            break;
+        case 'lastName':
+            label = 'Segundo nombre:'
+            type = 'text'
+            placeholder = 'Introduzca un nombre'
+            break;
+        case 'email':
+            label = 'Email:'
+            type = 'email'
+            placeholder = 'Introduzca su email'
+            break;
+        case 'roleId':
+            label = 'Rol:'
+            type = 'checkbox'
+            break;
+        case 'rol':
+            label = 'Rol:'
+            type= 'text'
+            break;
+        case 'description':
+            label = 'Descripcion:'
+            type= 'text'
+            placeholder = 'Introduzca una descripcion'
+            break;
+        case 'phone':
+            label = 'Celular:'
+            type = 'number'
+            placeholder = 'Introduzca un numero de celular'
+            break;
+            case 'message':
+                label = 'Mensaje:'
+                type = 'text'
+                placeholder = 'Introduzca su mensage'
+                break;
         default:
             break
     }
 
-    if(place === 'label') {
+    if (place === 'label') {
         return label;
     } else if (place === 'type') {
         return type;
-    } else if(place === 'placeholder') {
+    } else if (place === 'placeholder') {
         return placeholder;
     }
 }

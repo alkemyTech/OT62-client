@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { registerFieldData } from "../../../data/formsData";
@@ -6,14 +6,12 @@ import DynamicForm from "../../../Components/DynamicForm/DynamicForm";
 import { useNavigate } from "react-router-dom";
 import APICalls from "../../../shared/APICalls";
 import { resultAlert } from '../../../Components/utils/sweetAlerts';
-import { useUserToggleContext } from '../../../context/UserProvider';
+import { useUserContext } from '../../../context/UserProvider';
 
 
 function SignUp() {
+  const { setUser } = useUserContext()
   const navigate = useNavigate();
-  const [errorMessage, setErrorMessage] = useState(null);
-  const [successMessage, setSuccessMessage] = useState(null);
-  const setUser = useUserToggleContext()
 
   return (
     <Formik
@@ -41,13 +39,14 @@ function SignUp() {
             navigate("/");
           }, 2000);
         } catch (error) {
-          resultAlert('Algo ha salido mal', 'error')
+          const err = error.response.data;
+          resultAlert(err, 'error')
         }
       }}
     >
-      <div className="flex h-full w-full my-8 md:my-0">
+      <div className="flex min-h-full w-full my-8 md:my-0">
         <div className="w-full text-center justify-center h-full md:grid md:grid-cols-2">
-          <div className="flex flex-col justify-center items-center w-3/4 m-auto md:col-start-2">
+          <div className="flex flex-col justify-center items-center w-3/4 m-auto md:col-start-2 h-full">
             <div className="mb-8">
               <h6>Bienvenido</h6>
               <h3 className="text-3xl">Crea tu cuenta!</h3>

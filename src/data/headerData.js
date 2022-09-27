@@ -20,6 +20,11 @@ const linksPublic = [
       route: '/activities'
     },
     {
+      id: '5',
+      title: 'Testimonios',
+      route: '/testimonials'
+    },
+    {
       id: '6',
       title: 'Contacto',
       route: '/contacts'
